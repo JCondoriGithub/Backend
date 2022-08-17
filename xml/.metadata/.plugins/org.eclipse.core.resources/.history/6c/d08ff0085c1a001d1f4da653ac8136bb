@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/note" xmlns:tns="http://www.example.org/note" elementFormDefault="qualified">
+
+    
+
+    <element name="notes">
+    	<complexType>
+    		<sequence>
+    			<element name="note" minOccurs="0"
+    				maxOccurs="unbounded">
+    				<complexType>
+    					<sequence>
+    						<element name="title" type="string"></element>
+    						<element name="from" type="string"></element>
+    						<element name="to" type="string"></element>
+    						<element name="message" type="string"></element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    			<element name="agenda">
+    				<complexType>
+    					<sequence>
+    						<element name="person" minOccurs="0"
+    							maxOccurs="unbounded">
+    							<complexType></complexType>
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>

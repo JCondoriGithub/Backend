@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/note" xmlns:tns="http://www.example.org/note" elementFormDefault="qualified">
+
+    
+
+    <element name="notes">
+    	<complexType>
+    		<sequence>
+    			<element name="note" minOccurs="0"
+    				maxOccurs="unbounded">
+    				<complexType>
+    					<sequence>
+    						<element name="title" type="string"></element>
+    						<element name="from">
+    							<complexType>
+    								<attribute name="uder-id"
+    									type="IDREF" use="optional">
+    								</attribute>
+    							</complexType>
+    						</element>
+    						<element name="to">
+    							<complexType>
+    								<attribute name="user-id"
+    									type="IDREF" use="optional">
+    								</attribute>
+    							</complexType>
+    						</element>
+    						<element name="message">
+    							<complexType>
+    								<attribute name="lang">
+    									<simpleType>
+    										<restriction
+    											base="string">
+    											<enumeration
+    												value="it">
+    											</enumeration>
+    											<enumeration
+    												value="en">
+    											</enumeration>
+    											<enumeration
+    												value="fra">
+    											</enumeration>
+    											<enumeration
+    												value="es">
+    											</enumeration>
+    										</restriction>
+    									</simpleType>
+    								</attribute>
+    							</complexType>
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    			<element name="agenda">
+    				<complexType>
+    					<sequence>
+    						<element name="person" minOccurs="0"
+    							maxOccurs="unbounded">
+    							<complexType>
+    								<sequence>
+    									<element name="description">
+    										<complexType mixed="true">
+    											<choice minOccurs="0"
+    												maxOccurs="unbounded">
+    												<element name="imp"
+    													type="string">
+    												</element>
+    											</choice>
+    										</complexType>
+    									</element>
+    								</sequence>
+    								<attribute name="id" type="ID"
+    									use="required">
+    								</attribute>
+    								<attribute name="email"
+    									type="string" use="required">
+    								</attribute>
+    								<attribute name="name" type="string"
+    									use="required">
+    								</attribute>
+    								<attribute name="surname"
+    									type="string" use="required">
+    								</attribute>
+    							</complexType>
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+</schema>

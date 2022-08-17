@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT agenda (persona*)>
+<!ELEMENT persona (descrizione, amici)>
+<!ELEMENT descrizione (#PCDATA | cv)*>
+<!ELEMENT cv (#PCDATA)>
+<!ELEMENT amici (persona*)>
+<!ELEMENT persona (#PCDATA)>
+
+<!ATTLIST persona
+	id		ID		#REQUIRED
+	NOME	CDATA	#REQUIRED
+	cognome	CDATA	#REQUIRED
+	eta		CDATA	#IMPLIED>
+	
+<!ATTLIST persona
+	id	IDREF	#REQUIRED>

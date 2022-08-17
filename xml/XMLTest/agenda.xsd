@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/agenda" xmlns:tns="http://www.example.org/agenda" elementFormDefault="qualified">
+
+    <element name="agenda" type="tns:AgendaType"></element>
+    
+    <complexType name="AgendaType">
+    	<sequence>
+    		<element name="persona" type="tns:personaType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="personaType">
+    	<sequence>
+    		<element name="descrizione">
+    			<complexType mixed="true">
+    				<sequence>
+    					<element name="cv" type="string"></element>
+    				</sequence>
+    			</complexType>
+    		</element>
+    		<element name="amici">
+    			<complexType>
+    				<sequence>
+    					<element name="persona" minOccurs="0"
+    						maxOccurs="unbounded">
+    						<complexType>
+    							<sequence>
+    								<element name="of"
+    									type="IDREF">
+    								</element>
+    							</sequence>
+    						</complexType>
+    					</element>
+    				</sequence>
+    			</complexType>
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="ID" use="required"></attribute>
+    	<attribute name="nome" type="string" use="required"></attribute>
+    	<attribute name="cognome" type="string" use="required"></attribute>
+    	<attribute name="eta" type="nonNegativeInteger"></attribute>
+    </complexType>
+</schema>
