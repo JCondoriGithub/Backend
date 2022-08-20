@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tns:note xmlns:tns="http://www.example.org/note" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/note note.xsd ">
-  <tns:title>tns:title</tns:title>
-  <tns:message lang="">tns:message</tns:message>
-  <tns:from>tns:from</tns:from>
-  <tns:to>tns:to</tns:to>
-</tns:note>

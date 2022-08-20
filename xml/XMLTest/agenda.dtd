@@ -9,6 +9,6 @@
 
 <!ATTLIST persona
 	id		ID		#IMPLIED
-	NOME	CDATA	#IMPLIED
+	nome	CDATA	#IMPLIED
 	cognome	CDATA	#IMPLIED
 	eta		CDATA	#IMPLIED>

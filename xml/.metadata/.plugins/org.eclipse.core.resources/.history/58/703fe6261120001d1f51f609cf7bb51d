@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE amici SYSTEM "agenda.dtd" >
+<amici>
+  <persona NOME="Imilla" cognome="Condori" eta="3" id="idvalue1">
+  	<descrizione>
+  		qwerty<cv></cv>
+  	</descrizione>
+  	<amici>
+  		<persona>
+  			<of>idvalue1</of>
+  		</persona>
+  		<persona>
+  			<of>idvalue2</of>
+  		</persona>
+  	</amici>
+  	</persona>
+</amici>

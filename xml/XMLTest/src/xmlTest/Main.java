@@ -10,14 +10,19 @@ public class Main {
 
 	public static void main(String[] args) throws Exception{
 
+		//factory pattern per estrarre il parser
         SAXParserFactory spf = SAXParserFactory.newInstance();
         SAXParser saxParser = spf.newSAXParser();
         XMLReader parser = saxParser.getXMLReader();
         
+        //crerare handler
         ContentHandler handler = new MyAgendaHandler();
+        //registrare l'handler al parser
         parser.setContentHandler(handler);
+        //si inizia a fare il parsing
         parser.parse("agendadtd.xml");
         
+        //gestione degli errori
         if(((MyAgendaHandler) handler).getErrors().isEmpty()) {
         	System.out.println("Documento valido!");
         } else {
