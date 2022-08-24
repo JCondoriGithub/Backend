@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:agenda xmlns:tns="http://www.example.org/agenda" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/agenda agenda.xsd ">
+  <tns:persona cognome="Condori" eta="9" id="idvalue1" nome="Persy">
+    <tns:descrizione>
+      <tns:cv>tns:cv</tns:cv>
+    </tns:descrizione>
+    <tns:amici>
+    	<tns:persona>
+    		<tns:of>idvalue1</tns:of>
+    	</tns:persona>
+    	<tns:persona>
+    		<tns:of>idvalue1</tns:of>
+    	</tns:persona>
+    </tns:amici>
+  </tns:persona>
+</tns:agenda>
