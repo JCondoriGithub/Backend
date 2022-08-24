@@ -1,0 +1,42 @@
+package xmlTest;
+
+import org.w3c.dom.*;
+
+import java.io.IOException;
+
+import javax.xml.parsers.*;
+import org.xml.sax.*;
+
+public class MainDom {
+
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setValidating(true);
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		//builder.setErrorHandler(new Handler());
+		Document doc = builder.parse("agendadtd.xml");
+		
+		Element root = doc.getDocumentElement();
+		print(root, “”);
+
+	}
+
+	public static void print(Node n, String spaces) {
+		
+	    if (n == null) return;
+	    if (n instanceof Element) {
+	      String s = spaces + n.getNodeName() + " (";
+	      NamedNodeMap map = n.getAttributes();
+	      if (map != null)
+	    	  for (int i = 0; i < map.getLength(); i++)
+	    		  s += map.item(i).getNodeName() + "=" + map.item(i).getNodeValue();
+	      s += ")";
+	      System.out.println(s);
+	    } else  if (n instanceof Text)
+	    	System.out.println(spaces + n.getNodeValue());
+	    NodeList children = n.getChildNodes();
+	    for (int i = 0; i < children.getLength(); i++)
+	    	print(children.item(i), spaces + “ – “);
+	    }
+}
