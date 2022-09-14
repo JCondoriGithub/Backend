@@ -7,4 +7,6 @@
     <fullyQualifiedTypeName name="xmlTest.MyHandler"/>
     <fullyQualifiedTypeName name="org.xml.sax.helpers.DefaultHandler"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
 </qualifiedTypeNameHistroy>

@@ -21,19 +21,23 @@ public class Main {
 
 	public static void main(String[] args) throws SAXException, IOException, ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException {
 
+		//factory pattern per estrarre il parser e iniziare il parsing del docuemento
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse("agenda.xml");
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Scegli una di queste 2 opzioni: \n 1) stampa documento\n 2) aggiungi persona");
+		System.out.println("Scegli una di queste 2 opzioni: \n 1) stampa documento\n 2) aggiungi persona\n 3) esci dal programma");
 		String opzione = scanner.nextLine();
 		
 		if(opzione.equals("stampa documento")) {
+			
 		    Transformer trans = TransformerFactory.newInstance().newTransformer();
 		    trans.transform(new DOMSource(doc), new StreamResult(System.out));
-		}else {
+		
+		}else if (opzione.equals("aggiungi persona")) {
+			
 			Element root = doc.getDocumentElement();
 			Element per = doc.createElement("tns:persona");
 			per.setAttribute("nome", "Imilla");
@@ -57,6 +61,9 @@ public class Main {
 			
 		    Transformer trans = TransformerFactory.newInstance().newTransformer();
 		    trans.transform(new DOMSource(doc), new StreamResult(System.out));
+		
+		} else {
+			System.out.println("Programma terminato");
 		}
 	}
 
