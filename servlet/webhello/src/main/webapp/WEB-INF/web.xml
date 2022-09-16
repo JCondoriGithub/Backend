@@ -5,15 +5,15 @@
          version="3.1">
     <display-name>webhello</display-name>
     <welcome-file-list>
-    	<welcome-file>index.html</welcome-file>
+    	<welcome-file>calcolatrice</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>servlet1</servlet-name>
-        <servlet-class>webhello.HelloServlet</servlet-class>
+        <servlet-class>webhello.CalcServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
     	<servlet-name>servlet1</servlet-name>
-    	<url-pattern>/saluti</url-pattern>
+    	<url-pattern>/calcolatrice</url-pattern>
     </servlet-mapping>
 </web-app>
