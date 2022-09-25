@@ -1,4 +1,4 @@
-package webhello;
+package webhello.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;

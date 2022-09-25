@@ -1,4 +1,4 @@
-package webhello;
+package webhello.model;
 
 public class User {
 
@@ -12,7 +12,7 @@ public class User {
 		this.surname = surname;
 	}
 	
-	String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 	
@@ -20,7 +20,7 @@ public class User {
 		this.username = username;
 	}
 	
-	String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	
@@ -28,7 +28,7 @@ public class User {
 		this.password = password;
 	}
 	
-	String getName() {
+	public String getName() {
 		return name;
 	}
 	
@@ -36,7 +36,7 @@ public class User {
 		this.name = name;
 	}
 	
-	String getSurname() {
+	public String getSurname() {
 		return surname;
 	}
 	

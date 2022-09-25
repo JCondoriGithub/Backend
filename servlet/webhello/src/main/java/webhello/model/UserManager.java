@@ -1,4 +1,4 @@
-package webhello;
+package webhello.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class UserManager {
 		return instance;
 	}
 	
-	UserManager() {
+	public UserManager() {
 		users.add(new User("admin", "admin", "Mario", "Rossi"));
 		for(int i = 0; i < 10; i++)
 			users.add(new User("admin"+i, "pass", "Luca"+i, "Verdi"));
@@ -21,6 +21,13 @@ public class UserManager {
 	public User getUser(String username, String pass) {
 		for(User u: users)
 			if(u.getUsername().equals(username) && u.getPassword().equals(pass)) 
+				return u;
+			return null;
+	}
+	
+	public User getUser(String username) {
+		for(User u: users)
+			if(u.getUsername().equals(username)) 
 				return u;
 			return null;
 	}
