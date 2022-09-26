@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import webhello.model.User;
 import webhello.model.UserManager;
 
@@ -15,8 +16,9 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		User user = Utils.getUser(request);
-				
+		//User user = Utils.getUser(request);
+		User user = (User)request.getSession().getAttribute("user");	
+		
 		if(user != null)
 			response.getWriter().print("<html><body><h4>Benvenuto " + user.getName() + " " + user.getSurname() + "</h4>"
 					+ "<div><a href='./details'>dettagli</a></div>"
@@ -33,8 +35,10 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 				
 		UserManager userManager = new UserManager();
-
 		User user = userManager.getUser(username, password);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
 		
 		Utils.setUser(response, user);
 		
