@@ -20,7 +20,9 @@ public class IndexServlet extends HttpServlet {
 									+ "	</form>");
 		
 		if(request.getParameter("error") != null)
-			response.getWriter().print("<div><b>Errore!</b></div>");
+			response.getWriter().print("<div><b>Errore di login!</b></div>");
+		
+		Utils.setUser(response, null);
 	}
 
 }
