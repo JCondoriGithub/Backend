@@ -16,8 +16,7 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//User user = Utils.getUser(request);
-		User user = (User)request.getSession().getAttribute("user");	
+		User user = Utils.getUser(request);
 		
 		if(user != null)
 			response.getWriter().print("<html><body><h4>Benvenuto " + user.getName() + " " + user.getSurname() + "</h4>"
@@ -37,10 +36,7 @@ public class LoginServlet extends HttpServlet {
 		UserManager userManager = new UserManager();
 		User user = userManager.getUser(username, password);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user", user);
-		
-		Utils.setUser(response, user);
+		Utils.setUser(request, user);
 		
 		if(user != null)
 			response.getWriter().print("<html><body><h4>Benvenuto " + user.getName() + " " + user.getSurname() + "</h4>"

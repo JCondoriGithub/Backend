@@ -5,28 +5,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Cookie;
 import webhello.model.User;
 import webhello.model.UserManager;
+import jakarta.servlet.http.HttpSession;
 
 public class Utils {
 	
-	public static final String COOKIENAME = "chisono";
-
-	public static User getUser(HttpServletRequest req) {
+	public static void setUser(HttpServletRequest req, User user) {
 		
-		if(req.getCookies() == null)
-			return null;
-		else {
-			for(Cookie c: req.getCookies())
-				if(c.getName().equals(COOKIENAME))		
-					return  UserManager.getInstance().getUser(c.getValue());
-			return null;
-		}
+		req.getSession().setAttribute("user", user);
 	}
 	
-	public static void setUser(HttpServletResponse res, User u) {
+	public static User getUser(HttpServletRequest req) {
 	
-		Cookie c = new Cookie(COOKIENAME, u == null ? "" : u.getUsername());
-		if(u == null)
-			c.setMaxAge(0);
-		res.addCookie(c);
+		return (User)req.getSession().getAttribute("user");
 	}
 }

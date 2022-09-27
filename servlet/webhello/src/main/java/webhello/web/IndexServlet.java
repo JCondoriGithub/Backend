@@ -22,8 +22,7 @@ public class IndexServlet extends HttpServlet {
 		if(request.getParameter("error") != null)
 			response.getWriter().print("<div><b>Errore di login!</b></div>");
 		
-		Utils.setUser(response, null);
-		request.getSession().removeAttribute("user");
+		Utils.setUser(request, null);
 	}
 
 }

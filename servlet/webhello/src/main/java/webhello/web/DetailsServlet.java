@@ -15,8 +15,7 @@ public class DetailsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//User user = Utils.getUser(request);
-		User user = (User)request.getSession().getAttribute("user");
+		User user = Utils.getUser(request);
 		
 		if(user != null)
 			response.getWriter().print("<html><body><h3>Pagina dei dettagli per l'utente: </h3><b>" + user.getName() + " " + user.getSurname() + "</b>"
