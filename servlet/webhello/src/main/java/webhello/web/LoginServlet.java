@@ -14,20 +14,6 @@ import webhello.model.UserManager;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		User user = Utils.getUser(request);
-		
-		if(user != null)
-			response.getWriter().print("<html><body><h4>Benvenuto " + user.getName() + " " + user.getSurname() + "</h4>"
-					+ "<div><a href='./details'>dettagli</a></div>"
-					+ "<div><br><a href='./index'>logout</a></div>"
-					+ "</body></html>");
-		else {
-			response.sendRedirect("index?error");
-		}
-	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String username = request.getParameter("username");
@@ -39,12 +25,9 @@ public class LoginServlet extends HttpServlet {
 		Utils.setUser(request, user);
 		
 		if(user != null)
-			response.getWriter().print("<html><body><h4>Benvenuto " + user.getName() + " " + user.getSurname() + "</h4>"
-					+ "<div><a href='./details'>dettagli</a></div>"
-					+ "<div><br><a href='./index'>logout</a></div>"
-					+ "</body></html>");
+			response.sendRedirect("home.jsp");
 		else {
-			response.sendRedirect("index?error");
+			response.sendRedirect("index.jsp?error");
 		}
 	}
 

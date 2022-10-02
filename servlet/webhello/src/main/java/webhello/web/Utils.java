@@ -2,6 +2,9 @@ package webhello.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
 import jakarta.servlet.http.Cookie;
 import webhello.model.User;
 import webhello.model.UserManager;
@@ -18,4 +21,18 @@ public class Utils {
 	
 		return (User)req.getSession().getAttribute("user");
 	}
+	
+	public static void logout(HttpServletRequest req) {
+		
+		req.getSession().invalidate();
+	}
+	
+	public static boolean checkUser(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		User user = getUser(req);
+		if(user == null)
+			res.sendRedirect("index.jsp?err");
+		return user != null;
+	}
+
 }
