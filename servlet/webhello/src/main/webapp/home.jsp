@@ -13,8 +13,9 @@
 	<% User user = Utils.getUser(request); %>
 	<h3>Benvenuto</h3>
 	<div><%= user.getName() %> <%=user.getSurname() %></div>
-	<br><br>
-	<a href="details.jsp">dettagli</a>
+	<br>
+	<a href="cart.jsp">vai al carrello</a>
+	<br>
 	<a href="logout">logout</a>
 
 </body>

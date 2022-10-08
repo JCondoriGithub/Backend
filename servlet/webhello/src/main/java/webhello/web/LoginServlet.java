@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import webhello.model.Cart;
+import webhello.model.ProductManager;
 import webhello.model.User;
 import webhello.model.UserManager;
 
@@ -21,6 +23,11 @@ public class LoginServlet extends HttpServlet {
 				
 		UserManager userManager = new UserManager();
 		User user = userManager.getUser(username, password);
+		
+		Cart c = new Cart();
+		c.add(ProductManager.getInstance().getProduct(1), 2);
+		c.add(ProductManager.getInstance().getProduct(3), 1);
+		Utils.setCart(request, c);;
 		
 		Utils.setUser(request, user);
 		
