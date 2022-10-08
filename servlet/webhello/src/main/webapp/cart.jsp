@@ -31,6 +31,7 @@
 				<td><%=p.getName() %></td>
 				<td><%=p.getPrice() %>
 				<td><%=c.getQty(p) %></td>
+				<td><a href="remove?product=<%=p.getCodeID() %>">remove</a></td>
 			</tr>
 			<%} %>
 		
