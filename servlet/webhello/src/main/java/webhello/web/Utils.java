@@ -8,6 +8,7 @@ import java.io.IOException;
 import jakarta.servlet.http.Cookie;
 import webhello.model.Cart;
 import webhello.model.User;
+import webhello.model.User.Role;
 import webhello.model.UserManager;
 import jakarta.servlet.http.HttpSession;
 
@@ -39,11 +40,23 @@ public class Utils {
 	}
 	
 	public static boolean checkUser(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+		return checkUser(req, res, false);
+	}
+	
+	public static boolean checkUser(HttpServletRequest req, HttpServletResponse res, boolean requireAdmin) throws IOException {
 		
 		User user = getUser(req);
-		if(user == null)
-			res.sendRedirect("index.jsp?err");
-		return user != null;
+		if(user == null) {
+			res.sendRedirect("index.jsp?error");
+			return false;
+		}
+
+		if(requireAdmin && user.getRole() != Role.ADMIN) {
+			res.sendRedirect("home.jsp");
+			return false;
+		} else
+			return true;
 	}
 
 }

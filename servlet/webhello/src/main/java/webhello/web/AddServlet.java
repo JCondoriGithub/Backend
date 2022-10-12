@@ -1,4 +1,4 @@
-package webhello.model;
+package webhello.web;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -6,7 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import webhello.web.Utils;
+import webhello.model.Cart;
+import webhello.model.Product;
+import webhello.model.ProductManager;
 
 @WebServlet("/add")
 public class AddServlet extends HttpServlet {
@@ -15,7 +17,6 @@ public class AddServlet extends HttpServlet {
 
 		String codeID = request.getParameter("listProducts");
 		String qty = request.getParameter("inputQty");
-		System.out.println(qty);
 		
 		Product p = ProductManager.getInstance().getProduct(Integer.parseInt(codeID));
 		int q = Integer.parseInt(qty);

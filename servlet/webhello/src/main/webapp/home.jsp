@@ -17,6 +17,11 @@
 	<a href="cart.jsp">vai al carrello</a>
 	<br>
 	<a href="logout">logout</a>
+	
+	<%if(user.getRole() == User.Role.ADMIN) { %>
+	<br><br>
+	<a href="products.jsp">prodotti</a>
+	<%} %>
 
 </body>
 </html>

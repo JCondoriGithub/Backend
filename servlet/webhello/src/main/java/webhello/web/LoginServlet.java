@@ -3,11 +3,9 @@ package webhello.web;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import webhello.model.Cart;
 import webhello.model.ProductManager;
 import webhello.model.User;
@@ -21,8 +19,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 				
-		UserManager userManager = new UserManager();
-		User user = userManager.getUser(username, password);
+		User user = UserManager.getInstance().getUser(username, password);
 		
 		Cart c = new Cart();
 		c.add(ProductManager.getInstance().getProduct(1), 2);

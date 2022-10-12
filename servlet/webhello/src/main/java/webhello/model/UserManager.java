@@ -3,6 +3,8 @@ package webhello.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import webhello.model.User.Role;
+
 public class UserManager {
 
 	private List<User> users = new ArrayList<>();
@@ -13,9 +15,9 @@ public class UserManager {
 	}
 	
 	public UserManager() {
-		users.add(new User("admin", "admin", "Mario", "Rossi"));
+		users.add(new User("admin", "admin", "Mario", "Rossi", Role.ADMIN));
 		for(int i = 0; i < 10; i++)
-			users.add(new User("admin"+i, "pass", "Luca"+i, "Verdi"));
+			users.add(new User("user"+i, "pass", "Luca"+i, "Verdi", Role.COSTUMER));
 	}
 	
 	public User getUser(String username, String pass) {
