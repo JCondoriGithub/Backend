@@ -24,4 +24,9 @@ public class Product {
 	public int getPrice() {
 		return price;
 	}
+	
+	public String toString() {
+		String string = "code: " + this.codeID + ", name: " + this.name + ", price: " + this.price;
+		return string;
+	}
 }
