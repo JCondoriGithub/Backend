@@ -10,7 +10,7 @@
 <title>Home</title>
 </head>
 <body>
-1:43
+
 <c:out value="${user.role}"/><br>	<!-- cerca negli scope l'oggetto "user" (scope: request), invoca "getRole" e stampa a video -->
 <c:set var="messaggio" value="hello"/>
 <c:set var="messaggio" value="valore di sessione" scope="session"/>

@@ -16,30 +16,27 @@
 </head>
 <body>
 
-	<% User user = Utils.getUser(request); %>
 	<h3>Pagina del carrello per l'utente: </h3>
-	<b><%=user.getName() %> <%=user.getSurname() %></b>
-	<br><br>
+	<b><c:out value="${user.name} "/>
+	<c:out value="${user.surname}"/></b>
 	<table>
 		<tr>
 			<th>nome</th>
 			<th>prezzo</th>
 			<th>quantità</th>
 		</tr>
-		<% Cart c = Utils.getCart(request);
-			for(Product p: c.getProducts()) {
-		%>
+		<c:forEach items="${cart.products}" var="p">
 			<tr>
-				<td><%=p.getName() %></td>
-				<td><%=p.getPrice() %>
-				<td><%=c.getQty(p) %></td>
-				<td><a href="remove?product=<%=p.getCodeID() %>">remove</a></td>
+				<td><c:out value="${p.name}"/></td><br>
+				<td><c:out value="${p.price}"/></td><br>
+				<td><c:out value="${cart.getQty(p)}"/></td><br>
+				<td><a href="remove?product=${p.codeID}">remove</a></td>
 			</tr>
-			<%} %>
+		</c:forEach>
 		
 	</table>
 	<br>
-	<span>valore totale dei prodotti: <b><%=c.getTotPrice() %></b>€</span>
+	valore totale dei prodotti: <b><c:out value="${cart.getTotPrice()}"/></b>
 	<br><br>
 	<br>
 	<a href="add.jsp">aggiungi prodotti</a>
