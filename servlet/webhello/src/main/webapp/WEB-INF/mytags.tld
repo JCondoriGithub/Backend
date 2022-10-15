@@ -7,7 +7,12 @@
     <short-name>ecommerce</short-name>
     <tag>
     	<name>hello</name>
-    	<tag-class>webhello.web.HelloTag</tag-class>
-    	<body-content>empty</body-content>
+    	<tag-class>webhello.web.HelloTag</tag-class>	<!-- classe a cui è associato il tag -->
+    	<body-content>empty</body-content>	<!-- tag vuoto -->
+    	<attribute>
+    		<name>user</name>
+    		<required>false</required>
+    		<rtexprvalue>true</rtexprvalue>	  <!-- se non dichiarato, nell'attributo ci possono essere solo valori fissi -->
+    	</attribute>
     </tag>
 </taglib>
