@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<e:hello user="${user}"/>	<!-- cerca negli scope l'oggetto "user" (scope: request) e inseriscilo nell'attributo "user" -->
+<e:hello user="${user}" n="5"><br>contenuto/body del tag hello</e:hello>	<!-- si imposta l'attributo "n" al valore fisso 5 -->
 
 	<hr>
 	<% User user = Utils.getUser(request); %>

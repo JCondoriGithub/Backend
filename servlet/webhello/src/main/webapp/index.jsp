@@ -11,8 +11,6 @@
 </head>
 <body>
 
-<e:hello/>
-
 	<form action="login" method="post">
 		<h3>Login</h3><br>
 		<input type="text" name="username"><br>
@@ -25,8 +23,6 @@
 	if(request.getParameter("error") != null) {%>
 		<div>Login errato!</div>
 	<%} %>
-	
-<e:hello/>
 	
 </body>
 </html>

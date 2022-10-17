@@ -9,11 +9,18 @@ import webhello.model.User;
 
 public class HelloTag extends TagSupport {
 
-	User user;	// attributo della classe
+	User user;
+	int n;	// attributi della classe e del tag associato
+	int i;	// attributo della classe
 	
-	public void setUser(User user) {	// nell'attributo della classe verrà inserito l'oggetto "user" trovato dal tag hello 
+	public void setUser(User user) {
 		
 		this.user = user;
+	}
+	
+	public void setn(int n) {	// nell'attributo "n" della classe del tag, verrà inserito il valore fisso definito nel tag hello 
+		
+		this.n = n;
 	}
 	
 	@Override
@@ -24,7 +31,16 @@ public class HelloTag extends TagSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return super.doStartTag();
+		i = 0;
+		return EVAL_BODY_INCLUDE;	// renderizza il contenuto del tag
+		//return SKIP_BODY;	non renderizzare il contenuto del tag
+	}
+	
+	@Override
+	public int doAfterBody() throws JspException {
+		
+		i++;
+		return i == n ? SKIP_BODY : EVAL_BODY_AGAIN;	// se i==n salta il contenuto del tag, altrimenti renderizzalo ancora
 	}
 	
 	@Override
@@ -35,6 +51,7 @@ public class HelloTag extends TagSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return super.doStartTag();
+		return super.doEndTag();	// il resto della pagina potrà essere renderizzato
+		//return SKIP_PAGE;	non renderizzare il resto della pagina
 	}
 }
