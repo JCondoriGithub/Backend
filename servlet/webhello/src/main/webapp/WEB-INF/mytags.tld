@@ -19,4 +19,41 @@
     		<required>true</required>
     	</attribute>
     </tag>
+    <tag>
+    	<name>cart</name>
+    	<tag-class>webhello.web.CartTag</tag-class>
+    	<body-content>JSP</body-content>
+    	<attribute>
+    		<name>cart</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	<attribute>
+    		<name>add</name>
+    		<required>true</required>
+    	</attribute>
+    	<attribute>
+    		<name>var</name>
+    		<required>false</required>
+    	</attribute>
+    </tag>
+    <tag>
+    	<name>cart_product</name>
+    	<tag-class>webhello.web.CartProductTag</tag-class>
+    	<body-content>empty</body-content>
+    	<attribute>
+    		<name>cart</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	<attribute>
+    		<name>product</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	<attribute>
+    		<name>remove</name>
+    		<required>true</required>
+    	</attribute>
+    </tag>
 </taglib>
