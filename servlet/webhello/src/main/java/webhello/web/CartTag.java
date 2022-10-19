@@ -3,6 +3,7 @@ package webhello.web;
 import java.io.IOException;
 import java.util.List;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.jsp.JspException;
 import jakarta.servlet.jsp.tagext.TagSupport;
 import webhello.model.*;
@@ -40,7 +41,7 @@ public class CartTag extends TagSupport{
 	
 	@Override
 	public int doStartTag() {
-		
+
 		print("	<table>\n"
 				+ "		<tr>\n"
 				+ "			<th>nome</th>\n"
@@ -50,7 +51,7 @@ public class CartTag extends TagSupport{
 		
 		products= cart.getProducts();
 		index = 0;
-		
+				
 		if(index < products.size())
 			pageContext.setAttribute(var, products.get(index));
 		return products.size() > 0 ? EVAL_BODY_INCLUDE : SKIP_BODY;
@@ -58,7 +59,7 @@ public class CartTag extends TagSupport{
 	
 	@Override
 	public int doAfterBody() throws JspException {
-		
+
 		index++;
 		if(index < products.size())
 			pageContext.setAttribute(var, products.get(index));
@@ -67,12 +68,16 @@ public class CartTag extends TagSupport{
 	
 	@Override
 	public int doEndTag() throws JspException {
-		
-		print("	</table>\n"
-				+ "	<br>\n"
-				+ "	valore totale dei prodotti: <b>" + cart.getTotPrice() + "</b>"
-				+ "	<br><br>\n"
-				+ "	<a href=\"" + add + "\">aggiungi prodotti</a>");
+
+		try {
+			pageContext.getRequest().setAttribute("add", add);
+			pageContext.getRequest().setAttribute("cart", cart);	// si inseriscono questi attributi di "CartTag" nell'hashmap dello scope request
+			pageContext.include("cartfooter.jsp");	// renderizza nella pagina la risorsa cartfooter.jsp
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return super.doEndTag();
 	}

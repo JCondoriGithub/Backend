@@ -17,10 +17,12 @@
 </head>
 <body>
 
-	<h3>Pagina del carrello per l'utente: </h3>
-	<b><c:out value="${user.name} "/>
-	<c:out value="${user.surname}"/></b>
-		
+	<div>
+		<h3>Pagina del carrello per l'utente: </h3>
+		<b><c:out value="${user.name} "/>
+		<c:out value="${user.surname}"/></b>
+	</div>
+
 	<e:cart cart="${cart}" add="add.jsp" var="p">
 		<e:cart_product cart="${cart}" product="${p}" remove="remove?product="/>
 	</e:cart>
