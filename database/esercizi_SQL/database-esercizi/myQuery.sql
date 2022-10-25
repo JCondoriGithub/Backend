@@ -28,4 +28,38 @@ SELECT Nome, Cognome
 FROM esercizi.progetto, esercizi.impiegato, esercizi.partecipazione
 WHERE Bilancio>40 AND Sigla=Progetto AND Impiegato=Matricola;
 
+-- Trovare cognome dei direttori di dipartimento e dei responsabili di progetto
+SELECT impiegato.Cognome
+FROM esercizi.impiegato, esercizi.dipartimento
+WHERE impiegato.Matricola=dipartimento.Direttore
+UNION
+SELECT impiegato.Cognome
+FROM esercizi.impiegato, esercizi.progetto
+WHERE impiegato.Matricola=progetto.Responsabile;
 
+-- Trovare nomi dei dipartimenti in cui lavorano impiegati che guadagnano piu di 60
+SELECT DISTINCT dipartimento.Nome
+FROM esercizi.impiegato, esercizi.dipartimento
+WHERE impiegato.Stipendio>60 AND impiegato.Dipartimento=dipartimento.Codice;
+
+-- Trovare nomi dei dipartimenti in cui tutti gli impiegati guadagnano piu di 60
+SELECT dipartimento.Nome
+FROM esercizi.dipartimento
+WHERE dipartimento.Nome NOT IN
+(SELECT DISTINCT dipartimento.Nome
+FROM esercizi.impiegato, esercizi.dipartimento
+WHERE impiegato.Stipendio<=60 AND impiegato.Dipartimento=dipartimento.Codice);
+
+-- Trovare cognome degli impiegati di stipendio massimo
+SELECT impiegato.Cognome
+FROM esercizi.impiegato
+WHERE impiegato.Stipendio=
+(SELECT max(impiegato.stipendio)
+ FROM esercizi.impiegato);
+ 
+-- Trovare matricola e cognome degli impiegati che non lavorano a nessun progetto
+SELECT impiegato.Matricola, impiegato.Cognome
+FROM esercizi.impiegato
+WHERE impiegato.Matricola NOT IN
+(SELECT partecipazione.Impiegato
+FROM esercizi.partecipazione);
