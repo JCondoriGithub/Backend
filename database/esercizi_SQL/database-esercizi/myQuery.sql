@@ -63,3 +63,23 @@ FROM esercizi.impiegato
 WHERE impiegato.Matricola NOT IN
 (SELECT partecipazione.Impiegato
 FROM esercizi.partecipazione);
+
+-- Trovare matricola e cognome degli impiegati che lavorano a piu di un progetto ***
+SELECT impiegato.Matricola, impiegato.Cognome
+FROM esercizi.impiegato
+WHERE 1<(SELECT count(*)
+FROM esercizi.partecipazione
+WHERE partecipazione.Impiegato = impiegato.Matricola);
+
+-- Trovare matricola e cognome degli impiegati che lavorano a un solo progetto
+SELECT impiegato.Matricola, impiegato.Cognome
+FROM esercizi.impiegato
+WHERE 1=(SELECT count(*)
+FROM esercizi.partecipazione
+WHERE impiegato.Matricola=partecipazione.Impiegato);
+
+-- Trovare per ciascun dipartimento lo stipendio medio degli impiegati che vi lavorano
+SELECT dipartimento.Nome, AVG(impiegato.Stipendio)
+FROM esercizi.impiegato, esercizi.dipartimento
+WHERE impiegato.Dipartimento=dipartimento.Codice
+GROUP BY impiegato.dipartimento;
