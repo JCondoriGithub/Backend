@@ -21,6 +21,10 @@ public class Main {
 			Utils.materie(dbConnection);
 			Utils.matricole(dbConnection);
 			Utils.cercaMatricola(dbConnection, 3);
+			Utils.aggiungiStudente(dbConnection, 7, "Giovanni", "Muciaccia", "1969-12-26");
+			Utils.aggiungiProfessore(dbConnection, 4, "Egidio", "Rotta");
+			Utils.cancellaAlunno(dbConnection, 8);
+			Utils.cancellaProfessore(dbConnection, 5);
 		} catch (SQLException e) {
 			e.getMessage();
 		} finally {

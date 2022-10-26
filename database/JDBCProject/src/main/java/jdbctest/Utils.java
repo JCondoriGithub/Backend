@@ -112,4 +112,43 @@ public class Utils {
 		cmd.close();
 		res.close();
 	}
+	
+	static void aggiungiStudente(Connection dbConnection, int id, String nome, String cognome, String dataNascita) throws SQLException {
+
+		String query = "INSERT INTO JdbcSchema.alumnos(id_alumno, nombre, apellidos, fecha_nac)\n"
+				+ "VALUES(?, ?, ?, ?);";
+		PreparedStatement cmd = dbConnection.prepareStatement(query);
+		cmd.setInt(1, id);
+		cmd.setString(2, nome);
+		cmd.setString(3, cognome);
+		cmd.setString(4, dataNascita);
+		cmd.executeUpdate();
+	}
+	
+	static void aggiungiProfessore(Connection dbConnection, int id, String nome, String cognome) throws SQLException {
+		
+		String query = "INSERT INTO JdbcSchema.profesores(id_profesor, nombre, apellidos)\n"
+				+ "VALUES(?, ?, ?);";
+		PreparedStatement cmd = dbConnection.prepareStatement(query);
+		cmd.setInt(1, id);
+		cmd.setString(2, nome);
+		cmd.setString(3, cognome);
+		cmd.executeUpdate();
+	}
+	
+	static void cancellaAlunno(Connection dbConnection, int id) throws SQLException {
+		
+		String query = "DELETE FROM JdbcSchema.alumnos WHERE id_alumno = ?;";
+		PreparedStatement cmd = dbConnection.prepareStatement(query);
+		cmd.setInt(1, id);
+		cmd.executeUpdate();
+	}
+	
+	static void cancellaProfessore(Connection dbConnection, int id) throws SQLException {
+		
+		String query = "DELETE FROM JdbcSchema.profesores WHERE id_profesor = ?;";
+		PreparedStatement cmd = dbConnection.prepareStatement(query);
+		cmd.setInt(1, id);
+		cmd.executeUpdate();
+	}
 }
