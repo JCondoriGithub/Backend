@@ -7,7 +7,6 @@ public class Professore {
 	private String apellidos;
 	
 	public Professore(String nombre, String apellidos) {
-		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 	}
