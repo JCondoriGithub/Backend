@@ -151,4 +151,37 @@ public class Utils {
 		cmd.setInt(1, id);
 		cmd.executeUpdate();
 	}
+	
+	static void transazione(Connection dbConnection) throws SQLException {
+		
+		String query1 = "INSERT INTO JdbcSchema.profesores(id_profesor, nombre, apellidos) VALUES(?, ?, ?);";
+		String query2 = "INSERT INTO JdbcSchema.asignaturas(id_asignatura, nombre, profesor) VALUES(?,?,?);";
+		PreparedStatement addProf = null;
+		PreparedStatement addAsign = null;
+		
+		try {
+			addProf = dbConnection.prepareStatement(query1);
+			addProf.setInt(1, 5);
+			addProf.setString(2, "Riccardo");
+			addProf.setString(3, "Benzoni");
+			addProf.executeUpdate();
+			
+			addAsign = dbConnection.prepareStatement(query2);
+			addAsign.setInt(1, 10);
+			addAsign.setString(2, "Cloud computing");
+			addAsign.setInt(3, 5);
+			addAsign.executeUpdate();
+
+			dbConnection.commit();
+			System.out.println("transazione eseguita");
+		} catch (SQLException e) {
+			dbConnection.rollback();
+			e.printStackTrace();
+		} finally {
+			if(addProf != null)
+				addProf.close();
+			if(addAsign != null)
+				addAsign.close();
+		}
+	}
 }
