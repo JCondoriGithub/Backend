@@ -5,11 +5,11 @@ import jdbc.scuola.modello.Professore;
 
 public interface ProfessoreDAO {
 
-	void inserisci(Professore p);
+	void inserisci(Professore p) throws DAOException;
 	
-	void modifica(Professore p);
+	void modifica(Professore p) throws DAOException;
 	
-	void elimina(Professore p);
+	void elimina(Professore p) throws DAOException;
 	
 	void cercaProfessore(Integer id);
 	

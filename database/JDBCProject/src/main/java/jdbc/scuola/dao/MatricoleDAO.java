@@ -5,11 +5,11 @@ import jdbc.scuola.modello.Matricole;
 
 public interface MatricoleDAO {
 
-	void inserisci(Matricole m);
+	void inserisci(Matricole m) throws DAOException;
 	
-	void modifica(Matricole m);
+	void modifica(Matricole m) throws DAOException;
 	
-	void elimina(Matricole m);
+	void elimina(Matricole m) throws DAOException;
 	
 	void cercaMatricola(Integer id);
 	
