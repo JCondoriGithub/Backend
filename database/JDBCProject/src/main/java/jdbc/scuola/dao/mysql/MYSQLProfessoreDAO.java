@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +32,9 @@ public class MYSQLProfessoreDAO implements ProfessoreDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			stmt = conn.prepareStatement(INSERT);
-			stmt.setString(2, p.getNombre());
-			stmt.setString(3, p.getApellidos());
+			stmt = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, p.getNombre());
+			stmt.setString(2, p.getApellidos());
 			if(stmt.executeUpdate() == 0) {
 				throw new DAOException("l'insert non è stato eseguito!");
 			}
