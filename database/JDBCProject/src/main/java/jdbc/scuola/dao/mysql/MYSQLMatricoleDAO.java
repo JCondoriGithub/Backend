@@ -2,11 +2,14 @@ package jdbc.scuola.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.scuola.dao.DAOException;
 import jdbc.scuola.dao.MatricoleDAO;
+import jdbc.scuola.modello.Materie;
 import jdbc.scuola.modello.Matricole;
 
 public class MYSQLMatricoleDAO implements MatricoleDAO {
@@ -96,15 +99,81 @@ public class MYSQLMatricoleDAO implements MatricoleDAO {
 		}
 	}
 
-	public void cercaMatricola(Integer id) {
-		// TODO Auto-generated method stub
+	private Matricole converti(ResultSet rs) throws SQLException {
 		
+		Integer alunno = rs.getInt("alumno");
+		Integer materia = rs.getInt("asignatura");
+		Integer data = rs.getInt("fecha");
+		Integer voto = rs.getInt("nota");
+		
+		Matricole matricola = new Matricole(alunno, materia, data, voto);
+		return matricola;
 	}
 
-	public List<Matricole> listaMatricole() {
-		// TODO Auto-generated method stub
-		return null;
+	public Matricole cercaMatricola(Integer id) throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Matricole m = null;
+		try {
+			stmt = conn.prepareStatement(GETONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				m = converti(rs);
+			} else {
+				throw new DAOException("non si è trovato la matricola!");
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}
+		return m;
 	}
 
-	
+	public List<Matricole> listaMatricole() throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Matricole> matricole = new ArrayList<Matricole>();
+		try {
+			stmt = conn.prepareStatement(GETALL);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				matricole.add(converti(rs));
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}		
+		return matricole;
+	}	
 }

@@ -11,7 +11,7 @@ public interface MatricoleDAO {
 	
 	void elimina(Matricole m) throws DAOException;
 	
-	void cercaMatricola(Integer id);
+	Matricole cercaMatricola(Integer id) throws DAOException;
 	
-	List<Matricole> listaMatricole();
+	List<Matricole> listaMatricole() throws DAOException;
 }

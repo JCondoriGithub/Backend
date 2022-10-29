@@ -11,7 +11,7 @@ public interface ProfessoreDAO {
 	
 	void elimina(Professore p) throws DAOException;
 	
-	void cercaProfessore(Integer id);
+	Professore cercaProfessore(Integer id) throws DAOException;
 	
-	List<Professore> listaProfessori();
+	List<Professore> listaProfessori() throws DAOException;
 }

@@ -11,7 +11,7 @@ public interface MaterieDAO {
 	
 	void elimina(Materie m) throws DAOException;
 	
-	void cercaMateria(Integer id) throws DAOException;
+	Materie cercaMateria(Integer id) throws DAOException;
 	
 	List<Materie> listaMaterie() throws DAOException;
 }

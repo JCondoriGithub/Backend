@@ -2,12 +2,15 @@ package jdbc.scuola.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.scuola.dao.DAOException;
 import jdbc.scuola.dao.MaterieDAO;
 import jdbc.scuola.modello.Materie;
+import jdbc.scuola.modello.Professore;
 
 public class MYSQLMaterieDAO implements MaterieDAO {
 
@@ -93,14 +96,81 @@ public class MYSQLMaterieDAO implements MaterieDAO {
 		}
 	}
 
-	public void cercaMateria(Integer id) {
-		// TODO Auto-generated method stub
+	private Materie converti(ResultSet rs) throws SQLException {
 		
+		String nome = rs.getString("nombre");
+		Integer professore = rs.getInt("profesor");
+		
+		Materie materia = new Materie(nome, professore);
+		materia.setId_asignatura(rs.getInt("id_asignatura"));
+		return materia;
+	}
+	
+	public Materie cercaMateria(Integer id) throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Materie m = null;
+		try {
+			stmt = conn.prepareStatement(GETONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				m = converti(rs);
+			} else {
+				throw new DAOException("non si è trovato la materia!");
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}
+		return m;
 	}
 
-	public List<Materie> listaMaterie() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Materie> listaMaterie() throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Materie> materie = new ArrayList<Materie>();
+		try {
+			stmt = conn.prepareStatement(GETALL);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				materie.add(converti(rs));
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}		
+		return materie;
 	}
 
 }

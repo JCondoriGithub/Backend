@@ -12,7 +12,7 @@ public interface AlunnoDAO {
 	
 	void elimina(Alunno a) throws DAOException;
 	
-	void cercaAlunno(Integer id);
+	Alunno cercaAlunno(Integer id) throws DAOException;
 	
-	List<Alunno> listaAlunni();
+	List<Alunno> listaAlunni() throws DAOException;
 }

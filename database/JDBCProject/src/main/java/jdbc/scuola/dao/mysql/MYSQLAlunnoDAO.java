@@ -2,7 +2,9 @@ package jdbc.scuola.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import jdbc.scuola.dao.AlunnoDAO;
 import jdbc.scuola.dao.DAOException;
@@ -93,15 +95,82 @@ public class MYSQLAlunnoDAO implements AlunnoDAO {
 		}
 	}
 	
-
-	public void cercaAlunno(Integer id) {
-		// TODO Auto-generated method stub
+	private Alunno converti(ResultSet rs) throws SQLException {
 		
+		String nome = rs.getString("nombre");
+		String cognome = rs.getString("apellidos");
+		String dataNascita = rs.getString("fecha_nac");
+		
+		Alunno alunno = new Alunno(nome, cognome, dataNascita);
+		alunno.setId_alumno(rs.getInt("id_alumno"));
+		return alunno;
 	}
 
-	public List<Alunno> listaAlunni() {
-		// TODO Auto-generated method stub
-		return null;
+	public Alunno cercaAlunno(Integer id) throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Alunno a = null;
+		try {
+			stmt = conn.prepareStatement(GETONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				a = converti(rs);
+			} else {
+				throw new DAOException("non si è trovato l'alunno!");
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}
+		return a;
+	}
+
+	public List<Alunno> listaAlunni() throws DAOException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<Alunno> alunni = new ArrayList<Alunno>();
+		try {
+			stmt = conn.prepareStatement(GETALL);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				alunni.add(converti(rs));
+			}
+		} catch (SQLException ex) {
+			throw new DAOException("Error in SQL", ex);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+		}
+		return alunni;
 	}
 	
 }
