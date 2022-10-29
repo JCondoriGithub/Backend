@@ -14,7 +14,7 @@ import jdbc.scuola.modello.Professore;
 
 public class MYSQLProfessoreDAO implements ProfessoreDAO {
 
-	final String INSERT = "INSERT INTO JdbcSchema.profesores(id_profesor, nombre, apellidos) VALUES(?, ?, ?);";
+	final String INSERT = "INSERT INTO JdbcSchema.profesores(nombre, apellidos) VALUES(?, ?);";
 	final String UPDATE = "UPDATE JdbcSchema.profesores SET nombre = ?, apellidos = ? WHERE id_profesor = ?;";
 	final String DELETE = "DELETE FROM JdbcSchema.profesores WHERE id_profesor = ?;";
 	final String GETONE = "SELECT id_profesor, nombre, apellidos FROM JdbcSchema.profesores WHERE id_profesor = ?;";
@@ -29,13 +29,20 @@ public class MYSQLProfessoreDAO implements ProfessoreDAO {
 	public void inserisci(Professore p) throws DAOException {
 
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		try {
 			stmt = conn.prepareStatement(INSERT);
-			stmt.setInt(1, p.getId_profesor());
 			stmt.setString(2, p.getNombre());
 			stmt.setString(3, p.getApellidos());
 			if(stmt.executeUpdate() == 0) {
 				throw new DAOException("l'insert non è stato eseguito!");
+			}
+			
+			rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				p.setId_profesor(rs.getInt(1));
+			} else {
+				throw new DAOException("l'id del professore non è stato assegnato");
 			}
 		} catch (SQLException ex) {
 			throw new DAOException("Error in SQL", ex);
@@ -43,6 +50,13 @@ public class MYSQLProfessoreDAO implements ProfessoreDAO {
 			if(stmt != null) {
 				try {
 					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(rs != null) {
+				try {
+					rs.close();
 				} catch (SQLException ex) {
 					throw new DAOException("Error in SQL", ex);
 				}

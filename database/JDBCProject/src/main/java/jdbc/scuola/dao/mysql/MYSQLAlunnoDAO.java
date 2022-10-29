@@ -12,7 +12,7 @@ import jdbc.scuola.modello.Alunno;
 
 public class MYSQLAlunnoDAO implements AlunnoDAO {
 	
-	final String INSERT = "INSERT INTO JdbcSchema.alumnos(id_alumno, nombre, apellidos, fecha_nac) VALUES(?, ?, ?, ?);";
+	final String INSERT = "INSERT INTO JdbcSchema.alumnos(nombre, apellidos, fecha_nac) VALUES(?, ?, ?);";
 	final String UPDATE = "UPDATE JdbcSchema.alumnos SET nombre = ?, apellidos = ?, fecha_nac = ? WHERE id_alumno = ?;";
 	final String DELETE = "DELETE FROM JdbcSchema.alumnos WHERE id_alumno = ?;";
 	final String GETONE = "SELECT id_alumno, nombre, apellidos, fecha_nac FROM JdbcSchema.alumnos WHERE id_alumno = ?;";
@@ -27,14 +27,21 @@ public class MYSQLAlunnoDAO implements AlunnoDAO {
 	public void inserisci(Alunno a) throws DAOException {
 
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		try {
 			stmt = conn.prepareStatement(INSERT);
-			stmt.setInt(1, a.getId_alumno());
 			stmt.setString(2, a.getNombre());
 			stmt.setString(3, a.getApellidos());
 			stmt.setString(4, a.getFecha_nac());
 			if(stmt.executeUpdate() == 0) {
 				throw new DAOException("l'insert non è stato eseguito!");
+			}
+			
+			rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				a.setId_alumno(rs.getInt(1));
+			} else {
+				throw new DAOException("l'id dell'alunno non è stato assegnato");
 			}
 		} catch (SQLException ex) {
 			throw new DAOException("Error in SQL", ex);
@@ -42,6 +49,13 @@ public class MYSQLAlunnoDAO implements AlunnoDAO {
 			if(stmt != null) {
 				try {
 					stmt.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error in SQL", ex);
+				}
+			}
+			if(rs != null) {
+				try {
+					rs.close();
 				} catch (SQLException ex) {
 					throw new DAOException("Error in SQL", ex);
 				}
