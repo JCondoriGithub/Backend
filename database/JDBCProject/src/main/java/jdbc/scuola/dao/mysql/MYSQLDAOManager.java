@@ -50,29 +50,4 @@ public class MYSQLDAOManager implements DAOManager {
 		return professori;
 	}
 	
-	public static void main(String[] args) throws SQLException, DAOException {
-		MYSQLDAOManager managerDao = new MYSQLDAOManager("localhost", "root", "PuchiPuchi25!", "JdbcSchema");
-		/*List<Alunno> alunni = managerDao.getAlunnoDAO().listaAlunni();
-		Alunno alunno = managerDao.getAlunnoDAO().cercaAlunno(16);
-		//managerDao.getAlunnoDAO().inserisci(alunno);
-		managerDao.getAlunnoDAO().elimina(alunno);
-		System.out.println(alunni);
-		System.out.println(alunno);*/
-		
-		/*List<Materie> materie = managerDao.getMaterieDAO().listaMaterie();
-		System.out.println(materie);
-		Materie materia = managerDao.getMaterieDAO().cercaMateria(11);
-		//managerDao.getMaterieDAO().inserisci(materia);
-		managerDao.getMaterieDAO().elimina(materia);*/
-		
-		List<Matricole> matricole = managerDao.getMatricoleDAO().listaMatricole();
-		Matricole matricola = new Matricole (100);
-		matricola.setId(matricola.new IdMatricola(5, 8, 2016));
-		//Matricole matricolaC = managerDao.getMatricoleDAO().cercaMatricola(matricola);
-		System.out.println(matricole);
-		//managerDao.getMatricoleDAO().elimina(matricolaC);
-		//managerDao.getMatricoleDAO().inserisci(matricola);
-		System.out.println(matricole);
-		managerDao.getMatricoleDAO().modificaVoto(80, matricola);
-	}
 }
