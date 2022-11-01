@@ -6,6 +6,9 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
   <persistence-unit name="Persistenza">
+  
+  	<class>jpa.hibernate.modello.Impiegato</class> <!-- si inserisce il percorso della classe-entity per registrarlo in hiberbate -->
+  
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
         <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/JpaSchema" />
