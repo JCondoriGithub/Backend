@@ -10,37 +10,34 @@ import jpa.hibernate.modello.*;
 
 public class TestImpiegato {
 
-//	@PersistenceContext(unitName = "Persistenza")	--> in progetti web, per implementare l'entity manager
-	private static EntityManager manager;	// interfaccia java che contiene i metodi di CRUD e di transazione insieme ad altri metodi
-	private static EntityManagerFactory emf;
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Persistenza");
+	private static EntityManager manager;
 	
 	public static void main(String[] args) {
 
-		// si crea il gestore di persistenza (Entity Manager)
-		emf = Persistence.createEntityManagerFactory("Persistenza");	// per creare un'oggetto di tipo EntityManagerFactory
-		manager = emf.createEntityManager();	// per creare un'oggetto di tipo EntityManager
-		System.out.println("salve!");
+		manager = emf.createEntityManager();
 		
-		Impiegato imp = new Impiegato(1, "Marco", "Meri", "21-07-1990");
-		Impiegato imp2 = new Impiegato(2, "Giovanni",  "Regi", "30-09-1991");
-		
-		// inserire gli oggetti-entity nel database
-		manager.getTransaction().begin();
-		manager.persist(imp);	// inserisce l'oggetto nel database e lo converte in "oggetto-managed"
-		imp.setCognome("Moggi");	// infatti poi lo posso modificare anche dopo il suo inserimento nel database
-		manager.persist(imp2);
-		manager.getTransaction().commit();
-		
-		stampaImpiegati();
+		Impiegato imp = new Impiegato(1, "Maurizio", "Vizio", "21-07-1974");
 		
 		manager.getTransaction().begin();
-		Impiegato i = manager.find(Impiegato.class, 2);	// restituisce l'oggetto-entity e anche managed
-		i.setNome("Mario");
+		manager.persist(imp);
 		manager.getTransaction().commit();
+		stampaImpiegati();
+
+		manager.close();
 		
+		
+		manager = emf.createEntityManager();
+
+		manager.getTransaction().begin();
+		imp = manager.merge(imp);	// si converte l'oggetto-entity a managed, quindi il record associato in database potrà essere modificato
+		imp.setNome("Mario");		// visto che l'entity manager è stato precedentemente chiuso, l'oggetto-entity non è più managed e quindi il record associato in database non verrà modificato
+		//manager.merge(imp);		
+		manager.remove(imp);
+		manager.getTransaction().commit();		
 		stampaImpiegati();
 		
-		manager.close();	// quando non serve più, si chiude l'entity manager e tutti gli oggetti-managed mettono di essere menaged
+		manager.close();
 	}
 
 	private static void stampaImpiegati() {
