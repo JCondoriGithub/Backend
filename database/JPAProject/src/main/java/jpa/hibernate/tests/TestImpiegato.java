@@ -26,12 +26,21 @@ public class TestImpiegato {
 		
 		// inserire gli oggetti-entity nel database
 		manager.getTransaction().begin();
-		manager.persist(imp);	// inserisce l'ogegtto nel database e lo converte in "oggetto-managed"
+		manager.persist(imp);	// inserisce l'oggetto nel database e lo converte in "oggetto-managed"
 		imp.setCognome("Moggi");	// infatti poi lo posso modificare anche dopo il suo inserimento nel database
 		manager.persist(imp2);
 		manager.getTransaction().commit();
 		
 		stampaImpiegati();
+		
+		manager.getTransaction().begin();
+		Impiegato i = manager.find(Impiegato.class, 2);	// restituisce l'oggetto-entity e anche managed
+		i.setNome("Mario");
+		manager.getTransaction().commit();
+		
+		stampaImpiegati();
+		
+		manager.close();	// quando non serve più, si chiude l'entity manager e tutti gli oggetti-managed mettono di essere menaged
 	}
 
 	private static void stampaImpiegati() {
