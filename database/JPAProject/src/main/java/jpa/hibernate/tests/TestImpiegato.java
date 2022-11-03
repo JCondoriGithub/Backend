@@ -17,24 +17,15 @@ public class TestImpiegato {
 
 		manager = emf.createEntityManager();
 		
+		Indirizzo ind = new Indirizzo(1, "de angeli", "Gessate", "Lombardia", "Italia");	// si deve prima creare l'oggetto dell'entità d'arrivo, perche jpa non lo crea in automatico
 		Impiegato imp = new Impiegato(1, "Maurizio", "Vizio", "21-07-1974");
+		imp.setIndirizzo(ind);
 		
 		manager.getTransaction().begin();
+		manager.persist(ind);
 		manager.persist(imp);
-		manager.getTransaction().commit();
-		stampaImpiegati();
-
-		manager.close();
-		
-		
-		manager = emf.createEntityManager();
-
-		manager.getTransaction().begin();
-		imp = manager.merge(imp);	// si converte l'oggetto-entity a managed, quindi il record associato in database potrà essere modificato
-		imp.setNome("Mario");		// visto che l'entity manager è stato precedentemente chiuso, l'oggetto-entity non è più managed e quindi il record associato in database non verrà modificato
-		//manager.merge(imp);		
-		manager.remove(imp);
 		manager.getTransaction().commit();		
+		
 		stampaImpiegati();
 		
 		manager.close();

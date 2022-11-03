@@ -3,6 +3,8 @@ package jpa.hibernate.modello;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +23,10 @@ public class Impiegato {
 	
 	@Column(name = "data_nascita")
 	private String dataNascita;
+	
+	@OneToOne
+	@JoinColumn(name = "code_indirizzo")	// si indica che un questa colonna si inserisce la PK dell'oggetto "Indirizzo"
+	private Indirizzo indirizzo;
 	
 	public Impiegato() {
 		
@@ -64,11 +70,19 @@ public class Impiegato {
 	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
+	
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(Indirizzo indirizzo) {
+		this.indirizzo = indirizzo;
+	}
 
 	@Override
 	public String toString() {
 		return "Impiegato [codice=" + codice + ", nome=" + nome + ", cognome=" + cognome + ", dataNascita="
-				+ dataNascita + "]";
+				+ dataNascita + ", indirizzo=" + indirizzo + "]";
 	}
 	
 }
