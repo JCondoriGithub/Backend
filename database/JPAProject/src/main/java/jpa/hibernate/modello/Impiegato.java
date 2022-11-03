@@ -1,5 +1,6 @@
 package jpa.hibernate.modello;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Impiegato {
 	@Column(name = "data_nascita")
 	private String dataNascita;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})	// l'attributo cascade indica che a tutte le operazioni effettuate su questa entity, anche le entity associate ad essa verrano influenzate(remove, persist, ecc...)
 	@JoinColumn(name = "code_indirizzo")	// si indica che un questa colonna si inserisce la PK dell'oggetto "Indirizzo"
 	private Indirizzo indirizzo;
 	

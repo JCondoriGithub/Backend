@@ -17,12 +17,10 @@ public class TestImpiegato {
 
 		manager = emf.createEntityManager();
 		
-		Indirizzo ind = new Indirizzo(1, "de angeli", "Gessate", "Lombardia", "Italia");	// si deve prima creare l'oggetto dell'entità d'arrivo, perche jpa non lo crea in automatico
 		Impiegato imp = new Impiegato(1, "Maurizio", "Vizio", "21-07-1974");
-		imp.setIndirizzo(ind);
+		imp.setIndirizzo(new Indirizzo(1, "de angeli", "Gessate", "Lombardia", "Italia"));	// visto che è attivo l'attributo cascade, jpa fara il persist dell'oggett-entity "Indirizzo" automaticamente
 		
 		manager.getTransaction().begin();
-		manager.persist(ind);
 		manager.persist(imp);
 		manager.getTransaction().commit();		
 		
