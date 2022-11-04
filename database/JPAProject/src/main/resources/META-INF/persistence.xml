@@ -8,6 +8,10 @@
   <persistence-unit name="Persistenza">
   
   	<class>jpa.hibernate.modello.Impiegato</class> <!-- si inserisce il percorso della classe-entity per registrarlo in hiberbate -->
+    <class>jpa.hibernate.modello.Indirizzo</class>
+   	<class>jpa.hibernate.modello.Autore</class>
+  	<class>jpa.hibernate.modello.Libro</class>
+    	  	
   
     <properties>
         <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
