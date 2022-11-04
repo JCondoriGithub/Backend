@@ -2,7 +2,9 @@ package jpa.hibernate.modello;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Indirizzo {
 	
 	@Column(name = "paese")
 	private String paese;
+	
+	@OneToOne(mappedBy = "indirizzo", fetch = FetchType.LAZY)	// si annota una relazione già esistente in cui l'entity d'arrivo è "Indirizzo" e viene rappresentato dal campo "indirizzo" dell'entity "Impiegato"
+	private Impiegato impiegato;								// FetchType.LAZY indica che quest'oggetto di relazione verrà chiamato solo all'invocazione del suo metodo specifico di get
 
 	public Indirizzo() {
 		
@@ -77,10 +82,18 @@ public class Indirizzo {
 		this.paese = paese;
 	}
 
+	public Impiegato getImpiegato() {
+		return impiegato;
+	}
+
+	public void setImpiegato(Impiegato impiegato) {
+		this.impiegato = impiegato;
+	}	
+	
 	@Override
 	public String toString() {
 		return "Indirizzo [id=" + id + ", via=" + via + ", comune=" + comune + ", regione=" + regione + ", paese="
-				+ paese + "]";
+				+ paese + ", impiegato=" + impiegato.getCodice() + "]";
 	}
 	
 }

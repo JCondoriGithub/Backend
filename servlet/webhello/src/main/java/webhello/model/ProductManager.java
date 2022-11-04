@@ -10,9 +10,9 @@ import java.util.List;
 
 import com.mysql.cj.protocol.Resultset;
 
-public class ProductManager {
+public class ProductManager{
 
-	//private List<Product> products = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 	
 	private static ProductManager instance = new ProductManager();	// quando si esegue il progetto, subito si genera un'istanza della classe "ProductManager"
 	public static ProductManager getInstance() {	// metodo che restituisce l'istanza generata all'avvio del progetto
@@ -34,15 +34,15 @@ public class ProductManager {
 	}
 	
 	public ProductManager() throws SQLException {
-		//List<Product> products = new ArrayList<>();
-		/*products.add(new Product(1, "scarpe", 80));
-		products.add(new Product(2, "giubotto", 120));*/
-		Product p = new Product(3, "pantaloni", 60);
+		List<Product> products = new ArrayList<>();
+		products.add(new Product(1, "scarpe", 80));
+		products.add(new Product(2, "giubotto", 120));
+		Product p1 = new Product(3, "pantaloni", 60);
 		
 		PreparedStatement stmt = null;
 		Resultset rs = null;
 				
-		//for(Product p: products) {
+		for(Product p: products) {
 			
 			try {
 				stmt = conn.prepareStatement("INSERT INTO ecommerce.products(name, price) VALUES(?, ?)");
@@ -53,7 +53,7 @@ public class ProductManager {
 			} catch (SQLException ex) {
 				ex.printStackTrace();
 			}
-		//}
+		}
 	}
 	
 	public List<Product> getProducts() {

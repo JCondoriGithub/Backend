@@ -24,6 +24,8 @@ public class TestImpiegato {
 		manager.persist(imp);
 		manager.getTransaction().commit();		
 		
+		manager.refresh(imp);	// si aggiorna l'istanza, cosi sarà possibile ottenere anche l'impiegato dall'indirizzo
+		
 		stampaImpiegati();
 		
 		manager.close();
