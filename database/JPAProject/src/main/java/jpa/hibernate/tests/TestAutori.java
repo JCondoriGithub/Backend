@@ -19,19 +19,15 @@ public class TestAutori {
 		
 		manager.getTransaction().begin();
 		
-		Autore autore1 = new Autore(1, "Luca Carminati", "Italia");
-		Autore autore2 = new Autore(2, "David lugansk", "Usa");
-		Autore autore3 = new Autore(3, "Abdel Mahmed", "Egitto");
+		Libro libro = new Libro();
+		libro.setId(1);
+		libro.setTitolo("JPA e Hibernate");
+		manager.persist(libro);
 		
-		manager.persist(autore1);
-		manager.persist(autore2);
-		manager.persist(autore3);
-		
-		manager.persist(new Libro(1, "Il fucile m-16", autore2));
-		manager.persist(new Libro(2, "Come fare il parkourista", autore1));
-		manager.persist(new Libro(3, "Come fare la pizza", autore1));
-		manager.persist(new Libro(4, "Cosa vedere in Egitto", autore3));
-		manager.persist(new Libro(5, "Come fare la lasagna", autore1));
+		Autore autor = new Autore(1, "Riccado Benzone", "Italia");
+		autor.addLibro(libro);	// invece di assegnare un'autore al libro si assegna un libro all'autore, quindi nell'entity di partenza non è "registrata l'assegnazione" -> andare nella classe "Autore"
+		System.out.println("libri scritti (pre-persist): " + autor.getLibri().size());
+		manager.persist(autor);
 		
 		manager.getTransaction().commit();
 		
@@ -45,8 +41,9 @@ public class TestAutori {
 		manager = emf.createEntityManager();
 
 		Autore autore = manager.find(Autore.class, 1);
-		System.out.println(autore);
+		System.out.println("libri scritti (post-persist): " + autore.getLibri().size());	// si prelevano i libri dal database
 		
+		System.out.println(autore);
 		List<Libro> libri = autore.getLibri();
 		for(Libro libro: libri)
 			System.out.println(libro);

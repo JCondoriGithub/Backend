@@ -24,7 +24,7 @@ public class Autore {
 	@Column(name = "paese")
 	private String paese;
 
-	@OneToMany(mappedBy = "autore", cascade = CascadeType.ALL)	// si inserisce il campo-nome della class-entity in cui vi è l'oggetto corrente. L'attributo fetch di default è LAZY
+	@OneToMany(mappedBy = "autore", cascade = CascadeType.ALL)
 	private List<Libro> libri = new ArrayList<>();
 	
 	public Autore() {
@@ -67,6 +67,22 @@ public class Autore {
 
 	public void setLibri(List<Libro> libri) {
 		this.libri = libri;
+	}
+	
+	public void addLibro(Libro libro) {
+		
+		if(!libri.contains(libro)) {
+			libri.add(libro);
+			libro.setAutore(this);	// si DEVE indicare esplicitamente la relazione dal punto di vista del libro/entity di partenza
+		}
+	}
+	
+	public void removeLibro(Libro libro) {
+		
+		if(libri.contains(libro)) {
+			libri.remove(libro);
+			libro.setAutore(null);	// si indica anche che il libro non ha più un'autore 
+		}
 	}
 
 	@Override

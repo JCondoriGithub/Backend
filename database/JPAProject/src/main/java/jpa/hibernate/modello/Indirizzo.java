@@ -28,7 +28,7 @@ public class Indirizzo {
 	private String paese;
 	
 	@OneToOne(mappedBy = "indirizzo", fetch = FetchType.LAZY)	// si annota una relazione già esistente in cui l'entity d'arrivo è "Indirizzo" e viene rappresentato dal campo "indirizzo" dell'entity "Impiegato"
-	private Impiegato impiegato;								// FetchType.LAZY indica che quest'oggetto di relazione verrà chiamato solo all'invocazione del suo metodo specifico di get
+	private Impiegato impiegato;								// FetchType.LAZY indica che quest'oggetto di relazione verrà "caricato" solo all'invocazione del suo metodo specifico di get
 
 	public Indirizzo() {
 		

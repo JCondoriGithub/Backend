@@ -34,43 +34,29 @@ public class Libro {
 		this.autore = autore;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
 	public String getTitolo() {
 		return titolo;
 	}
-
-
 
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
-
-
 	public Autore getAutore() {
 		return autore;
 	}
 
-
-
 	public void setAutore(Autore autore) {
 		this.autore = autore;
 	}
-
-
 
 	@Override
 	public String toString() {
