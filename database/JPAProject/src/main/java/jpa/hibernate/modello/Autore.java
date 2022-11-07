@@ -7,8 +7,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 
 @Entity
 @Table(name = "tbl_Autore")
@@ -24,7 +27,8 @@ public class Autore {
 	@Column(name = "paese")
 	private String paese;
 
-	@OneToMany(mappedBy = "autore", cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.PERSIST})	// si annota il tipo di relazione e si indica il PERSIST come tipo di cascade
+	@JoinTable(name = "autore_libro", joinColumns = {@JoinColumn(name = "id_autore")}, inverseJoinColumns = {@JoinColumn(name = "id_libro")})	// si definiscono le caratteristiche della tebella di relazione
 	private List<Libro> libri = new ArrayList<>();
 	
 	public Autore() {

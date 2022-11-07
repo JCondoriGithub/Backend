@@ -1,10 +1,15 @@
 package jpa.hibernate.modello;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -19,19 +24,17 @@ public class Libro {
 	@Column(name = "titolo")
 	private String titolo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)	// si deve impostare l'attributo fetch come LAZY
-	@JoinColumn(name = "code_autore")	// si indica che un questa colonna si inserisce la PK dell'oggetto "Autore"
-	private Autore autore;
+	@ManyToMany(mappedBy = "libri")		// si definisce anche il mappedBy
+	private List<Autore> autori = new ArrayList<>();
 	
 	public Libro() {
 
 	}
 
-	public Libro(Integer id, String titolo, Autore autore) {
-		super();
+	public Libro(Integer id, String titolo, List<Autore> autori) {
 		this.id = id;
 		this.titolo = titolo;
-		this.autore = autore;
+		this.autori = autori;
 	}
 
 	public Integer getId() {
@@ -49,18 +52,25 @@ public class Libro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-
-	public Autore getAutore() {
-		return autore;
+	
+	public List<Autore> getAutori() {
+		return autori;
 	}
 
+	public void setAutori(List<Autore> autori) {
+		this.autori = autori;
+	}
+	
 	public void setAutore(Autore autore) {
-		this.autore = autore;
+		
+		if(!autori.contains(autore)) {
+			autori.add(autore);
+		}
 	}
 
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", titolo=" + titolo + ", autore=" + autore + "]";
+		return "Libro [id=" + id + ", titolo=" + titolo + ", autori=" + autori + "]";
 	}
 	
 }
