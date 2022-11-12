@@ -1,0 +1,31 @@
+package snippet;
+
+public class Snippet {
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	</head>
+	<body>
+	
+		<form action="login" method="post">
+			<h3>Loginfff</h3>
+			<input type="text" name="username"><br>
+		 	<input type="password" name="password"><br><br>
+		 	<input type="submit" value="submit" name="login">
+		</form>
+	
+	<!-- <h2>calcolatore</h2>
+		<form action="saluti" method="post">
+		  <input type="text" id="1op" name="1op"><br>
+		  <input type="text" id="2op" name="2op"><br><br>
+		  <input type="submit" value="somma" name="op">
+		  <input type="submit" value="sottrazione" name="op">
+		  <input type="submit" value="prodotto" name="op">
+		  <input type="submit" value="divisione" name="op">
+		</form> -->
+	</body>
+	</html>
+}
+

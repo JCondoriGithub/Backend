@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import webhello.model.Cart;
 import webhello.model.ProductManager;
+import webhello.model.ProductManagerMemory;
 import webhello.model.User;
 import webhello.model.UserManager;
 
@@ -23,15 +24,7 @@ public class LoginServlet extends HttpServlet {
 				
 		User user = UserManager.getInstance().getUser(username, password);
 		
-		try {
-			ProductManager.getInstance().getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		
 		Cart c = new Cart();
-		c.add(ProductManager.getInstance().getProduct(1), 2);
-		c.add(ProductManager.getInstance().getProduct(3), 1);
 		Utils.setCart(request, c);
 		
 		Utils.setUser(request, user);

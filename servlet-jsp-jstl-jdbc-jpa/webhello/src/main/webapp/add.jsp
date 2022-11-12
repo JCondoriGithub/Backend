@@ -14,7 +14,9 @@
 
 <form action="add" method="post">
 	<select name="listProducts">
-	<%for(Product p: ProductManager.getInstance().getProducts()) {%>
+	<%
+	for(Product p: ProductManager.getInstance().getProducts()) {
+	%>
 		  <option value="<%=p.getCodeID() %>"><%=p.getName() %></option>
 	<%} %>
 	</select>

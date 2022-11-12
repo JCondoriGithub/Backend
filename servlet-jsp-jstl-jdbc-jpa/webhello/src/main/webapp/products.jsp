@@ -24,7 +24,8 @@
 			<th>prezzo</th>
 			<th>rimuovi</th>
 		</tr>
-		<% Cart c = Utils.getCart(request);
+		<%
+		Cart c = Utils.getCart(request);
 			for(Product p: ProductManager.getInstance().getProducts()) {
 		%>
 			<tr>
