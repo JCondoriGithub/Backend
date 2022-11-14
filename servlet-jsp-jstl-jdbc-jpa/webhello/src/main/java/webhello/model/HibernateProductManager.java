@@ -17,14 +17,6 @@ public class HibernateProductManager extends ProductManager {
 		return sf.createEntityManager();
 	}
 
-/*	static {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
-		}
-	}*/
-
 	public void remove(int code) {
 
 		EntityManager em = null;
@@ -49,6 +41,30 @@ public class HibernateProductManager extends ProductManager {
 			em = openEM();
 			em.getTransaction().begin();
 			Product p = new Product(null, name, price);
+			em.persist(p);
+			em.getTransaction().commit();
+			return p;
+		} catch (EntityExistsException ex) {
+			throw new DuplicatedProductException(ex.getMessage());
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null)
+				em.close();
+		}
+	}
+	
+	@Override
+	public Product add(String name, int price, Category cat) throws DuplicatedProductException {
+		
+		EntityManager em = null;
+		try {
+			em = openEM();
+			em.getTransaction().begin();
+			Product p = new Product(null, name, price);
+			cat = cat == null ? cat : em.find(Category.class, cat.getCode());
+			p.setCategory(cat);
 			em.persist(p);
 			em.getTransaction().commit();
 			return p;
@@ -93,6 +109,48 @@ public class HibernateProductManager extends ProductManager {
 		try {
 			em = openEM();
 			return (List<Product>) em.createQuery("select p from Product p").getResultList();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null) {
+				em.close();
+			}
+		}
+	}
+	
+	@Override
+	public Category getCategory(int code) {
+		
+		EntityManager em = null;
+		try {
+			em = openEM();
+			return em.find(Category.class, code);
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null) {
+				em.close();
+			}
+		}
+	}
+
+	/*public static void main (String[] args) throws SQLException {
+		EntityManager em = null;
+		em = openEM();
+		Category c = new Category(5, "cose");
+		Category c1 =em.find(Category.class, 3);
+		System.out.println(c1);
+	}*/
+	
+	@Override
+	public List<Category> getCategories() {
+		
+		EntityManager em = null;
+		try {
+			em = openEM();
+			return (List<Category>) em.createQuery("select c from Category c").getResultList();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			return null;

@@ -16,9 +16,10 @@ public class AddProdServlet extends HttpServlet {
 
 		String nameProduct = request.getParameter("nameProduct");
 		int priceProduct = Integer.parseInt(request.getParameter("priceProduct"));
+		String category = request.getParameter("category");
 		
 		try {
-			ProductManager.getInstance().add(nameProduct, priceProduct);
+			ProductManager.getInstance().add(nameProduct, priceProduct, (category == null || category.isEmpty()) ? null : ProductManager.getInstance().getCategory(Integer.parseInt(category)));
 			response.sendRedirect("products.jsp");
 		} catch (DuplicatedProductException ex){
 			response.sendRedirect("products.jsp?error");

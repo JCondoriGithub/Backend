@@ -13,9 +13,9 @@ public abstract class ProductManager {
 	
 	public abstract Product add(String name, int price) throws DuplicatedProductException;
 		
-	/*public Product add(String name, int price, Category cat) throws DuplicatedProductException {
+	public Product add(String name, int price, Category cat) throws DuplicatedProductException {
 		throw new NotImplemented();
-	}*/
+	}
 	
 	public abstract Product getProduct(int id);
 	
@@ -23,14 +23,14 @@ public abstract class ProductManager {
 	
 	public abstract void remove(int code);
 	
-	/*public List<Category> getCategories(){
+	public List<Category> getCategories(){
 		throw new NotImplemented();
 	}
 
 	public Category getCategory(int code){
 		throw new NotImplemented();
 	}
-	*/
+
 	public static class DuplicatedProductException extends Exception{
 		private static final long serialVersionUID = 5205260546649719848L;
 		

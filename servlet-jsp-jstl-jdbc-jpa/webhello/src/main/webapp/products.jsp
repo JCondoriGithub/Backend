@@ -22,6 +22,7 @@
 		<tr>
 			<th>nome</th>
 			<th>prezzo</th>
+			<th>categoria</th>
 			<th>rimuovi</th>
 		</tr>
 		<%
@@ -30,6 +31,7 @@
 		%>
 			<tr>
 				<td><%=p.getName() %></td>
+				<td><%=p.getCategory() == null ? "-" : p.getCategory().getName() %></td>
 				<td><%=p.getPrice() %></td>
 				<td><a href="remProduct?product=<%=p.getCodeID() %>">remove</a></td>
 			</tr>
@@ -44,6 +46,17 @@
 	<input type="text" name="nameProduct"><br>
 	prezzo prodotto<br>
 	<input type="number" name="priceProduct">€<br>
+	<label for="cars">Categoria</label>
+	<br>
+	<select name="category">
+	<option value="">--nessuna categoria--</option>
+<%
+	for(Category cat: ProductManager.getInstance().getCategories()) { 
+%>
+      <option value="<%=cat.getCode() %>"><%=cat.getName() %></option>
+<%} %>
+  	</select>
+	<br><br>
 	<input type="submit" value="aggiungi" name="addButton">
 </form>
 <br>
