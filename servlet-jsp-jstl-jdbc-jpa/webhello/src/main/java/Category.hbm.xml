@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="webhello.model">
+	<class name="Category" table="categories">
+		<id name="code" type="int" column="code">
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" type="string" column="name" />
+	</class>
+</hibernate-mapping>

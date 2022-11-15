@@ -15,7 +15,8 @@
 		<property name="show_sql">true</property>
 		<mapping class="webhello.model.Product"/>
 		<mapping class="webhello.model.Category"/>
-		<!-- <mapping resource="Product.hbm.xml" />-->
+		<!-- <mapping resource="Product.hbm.xml" />
+		<mapping resource="Category.hbm.xml" /> -->
 	</session-factory>
 
 </hibernate-configuration>

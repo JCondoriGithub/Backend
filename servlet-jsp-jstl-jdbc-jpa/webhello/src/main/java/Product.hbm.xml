@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="webhello.model">
+	<class name="Product" table="products">
+		<id name="codeID" type="int" column="codeID">
+			<generator class="native"/>
+		</id>
+		<property name="name" type="string" column="name" />
+		<property name="price" type="int" column="price"/>
+		
+		<many-to-one name="category" class="Category" column="code_category" lazy="false" />
+	</class>
+</hibernate-mapping>
