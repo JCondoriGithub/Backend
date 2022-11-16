@@ -8,10 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "products")
+@NamedQueries({
+	@NamedQuery(name = "Product.getByCategory", query = "select p from Product p where p.category=:c"),
+	@NamedQuery(name = "Product.getByCategoryName", query = "select p from Product p where p.category.name=:n"),
+	@NamedQuery(name = "Product.getAll", query = "select p from Product p"),
+	@NamedQuery(name = "Product.find", query = "select p from Product p left join fetch p.category c where p.name like :txt or c.name like :txt")
+})
 public class Product {
 
 	@Id

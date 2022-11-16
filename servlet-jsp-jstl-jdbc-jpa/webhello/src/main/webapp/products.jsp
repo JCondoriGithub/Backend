@@ -21,8 +21,8 @@
 <table>
 		<tr>
 			<th>nome</th>
-			<th>prezzo</th>
 			<th>categoria</th>
+			<th>prezzo</th>
 			<th>rimuovi</th>
 		</tr>
 		<%

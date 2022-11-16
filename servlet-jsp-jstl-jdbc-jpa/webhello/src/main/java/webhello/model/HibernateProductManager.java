@@ -16,6 +16,52 @@ public class HibernateProductManager extends ProductManager {
 	private EntityManager openEM() throws SQLException {
 		return sf.createEntityManager();
 	}
+	
+	public HibernateProductManager() {
+		
+		EntityManager em = sf.createEntityManager();
+		em.getTransaction().begin();
+		if(em.createQuery("select c from Category c").getResultList().isEmpty()) {
+			
+			System.out.println("creando categorie di default");
+			em.persist(new Category(null, "casa"));
+			em.persist(new Category(null, "hobby"));
+		}
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public List<Product> getByCategory(Category cat) {
+		
+		EntityManager em = null;
+		try {
+			em = openEM();
+			return (List<Product>) em.createNamedQuery("Product.getByCategory").setParameter("c", cat).getResultList();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null) {
+				em.close();
+			}
+		}
+	}
+	
+	public List<Product> getByCategoryName(String name) {
+		
+		EntityManager em = null;
+		try {
+			em = openEM();
+			return (List<Product>) em.createNamedQuery("Product.getByCategoryName").setParameter("n", name).getResultList();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null) {
+				em.close();
+			}
+		}
+	}
 
 	public void remove(int code) {
 
@@ -108,7 +154,7 @@ public class HibernateProductManager extends ProductManager {
 			EntityManager em = null;
 		try {
 			em = openEM();
-			return (List<Product>) em.createQuery("select p from Product p").getResultList();
+			return (List<Product>) em.createNamedQuery("Product.getAll").getResultList();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			return null;
@@ -136,13 +182,20 @@ public class HibernateProductManager extends ProductManager {
 		}
 	}
 
-	/*public static void main (String[] args) throws SQLException {
+	public List<Product> find(String txt) {
+		
 		EntityManager em = null;
-		em = openEM();
-		Category c = new Category(5, "cose");
-		Category c1 =em.find(Category.class, 3);
-		System.out.println(c1);
-	}*/
+		try {
+			em = openEM();
+			return em.createNamedQuery("Product.find").setParameter("txt", txt).getResultList();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		} finally {
+			if(em != null)
+				em.close();
+		}
+	}
 	
 	@Override
 	public List<Category> getCategories() {
@@ -150,7 +203,7 @@ public class HibernateProductManager extends ProductManager {
 		EntityManager em = null;
 		try {
 			em = openEM();
-			return (List<Category>) em.createQuery("select c from Category c").getResultList();
+			return (List<Category>) em.createNamedQuery("Category.getAll").getResultList();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			return null;
