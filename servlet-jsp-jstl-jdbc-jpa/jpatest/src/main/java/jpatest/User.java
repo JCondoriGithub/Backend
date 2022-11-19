@@ -1,11 +1,16 @@
 package jpatest;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
-@MappedSuperclass	// si indica che questa non è una classe-entity, ma da essa derivano delle classe-entity 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO")		// si imposta il nome del campo "DTYPE" ed eventualmente anche il tipo di dato con "discriminatorType"
 public class User {
 
 	@Id

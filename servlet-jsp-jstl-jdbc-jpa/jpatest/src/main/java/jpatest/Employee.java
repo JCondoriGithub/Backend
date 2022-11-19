@@ -1,8 +1,10 @@
 package jpatest;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value = "impiegato")	// si imposta il nome dell'entity che sarà in "DTYPE"
 public class Employee extends User {
 
 	private String idNumber;
