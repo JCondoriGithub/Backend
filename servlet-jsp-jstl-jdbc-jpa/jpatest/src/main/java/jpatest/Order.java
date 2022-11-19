@@ -16,13 +16,13 @@ public class Order {
 	
 	@ManyToOne
 	Customer customer;
-
+//	User customer;	la relazione è con la superclasse "User", quindi, a livello di DB, non si riesce ad individuare la tabella specifica della relazione. Perche in User si trovano i records che non sono ne di "Customer" ne di "Employee"
+	
 	public Order() {
 		
 	}
 	
 	public Order(Long id, String title, Customer customer) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.customer = customer;
@@ -44,7 +44,7 @@ public class Order {
 		this.title = title;
 	}
 
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
 

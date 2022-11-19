@@ -4,7 +4,6 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "cliente")	// si imposta il nome dell'entity che sarà in "DTYPE"
 public class Customer extends User {
 
 	private String vatNumber;

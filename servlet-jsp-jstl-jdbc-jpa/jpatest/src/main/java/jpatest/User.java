@@ -9,8 +9,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TIPO")		// si imposta il nome del campo "DTYPE" ed eventualmente anche il tipo di dato con "discriminatorType"
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User {
 
 	@Id
