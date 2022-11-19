@@ -13,16 +13,16 @@ import jakarta.persistence.Persistence;
 
 public class HibernateProductManager extends ProductManager {
 	
-	SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-	//EntityManagerFactory emf = Persistence.createEntityManagerFactory("webhello");
+	//SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("webhello");
 	
 	private EntityManager openEM() throws SQLException {
-		return sf.createEntityManager();
+		return emf.createEntityManager();
 	}
 	
 	public HibernateProductManager() {
 		
-		EntityManager em = sf.createEntityManager();
+		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		if(em.createQuery("select c from Category c").getResultList().isEmpty()) {
 			
