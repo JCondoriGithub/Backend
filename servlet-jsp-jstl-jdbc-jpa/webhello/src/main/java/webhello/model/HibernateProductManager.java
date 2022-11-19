@@ -8,11 +8,14 @@ import org.hibernate.cfg.Configuration;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class HibernateProductManager extends ProductManager {
 	
 	SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-
+	//EntityManagerFactory emf = Persistence.createEntityManagerFactory("webhello");
+	
 	private EntityManager openEM() throws SQLException {
 		return sf.createEntityManager();
 	}
