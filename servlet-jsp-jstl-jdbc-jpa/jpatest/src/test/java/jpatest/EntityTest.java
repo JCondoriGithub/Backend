@@ -17,7 +17,7 @@ class EntityTest {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-		em.persist(new User(null, "user2", "password"));	// la superclasse può essere persistita
+//		em.persist(new User(null, "user2", "password"));	 è una classe-entity-astratta, quindi non può persistere. Nel db non ci possono essere records che non appartengono ad una delle sottoclassi
 		em.persist(new Employee("userX", "passwordX", "IDxxxx"));
 		em.persist(new Employee("userY", "passwordY", "IDyyyy"));
 		Customer c;

@@ -1,0 +1,8 @@
+alter table Customer drop foreign key FKb4lp4g96o4g0qdwo5p87kl4sw;
+alter table Employee drop foreign key FKk3y9fucyl9ybj1wyrx3hvsjby;
+alter table orders drop foreign key FKlxvrjb6oyfjjffp0vvusn22uy;
+drop table if exists Customer;
+drop table if exists Employee;
+drop table if exists orders;
+drop table if exists User;
+drop table if exists User_SEQ;

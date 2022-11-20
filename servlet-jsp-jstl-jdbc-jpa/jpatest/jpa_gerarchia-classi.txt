@@ -1,0 +1,11 @@
+// RAPPRESENTARE LA GERARCHIA DELLE CLASSI IN JPA
+
+i modi sono i seguenti:
+
+- mappedSuperClass -> creare una classe astratta che conterrà delle proprietà, non è una classe-entity. Le classe-entity che derivano dalla astratta ereditano le proprietà
+
+- single-table -> si usa solo una tabella della superclasse, in cui vi saranno tutti gli attributi delle classe-entity derivate e un'atttributo che stabilisce l'entità d'appartenenza del record
+
+- table-per-class -> vi è una tabella per ogni classe. E' possibile anche la versione in cui la superclasse è astratta
+
+- joined -> vi è una tabella per ogni classe. La tabella della superclasse contiene solo i campi comuni, le tabelle delle sottoclassi hanno solo gli id che sono delle fk del record associato nella superclasse e i loro campi aggiuntivi. E' possibile anche la versione in cui la superclasse è astratta

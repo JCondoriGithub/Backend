@@ -10,7 +10,7 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public abstract class User {	// diventa una classe astratta
 
 	@Id
 	@GeneratedValue

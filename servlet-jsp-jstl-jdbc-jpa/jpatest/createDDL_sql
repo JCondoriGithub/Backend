@@ -1,0 +1,10 @@
+create table Customer (vatNumber varchar(255), id bigint not null, primary key (id)) engine=InnoDB;
+create table Employee (idNumber varchar(255), id bigint not null, primary key (id)) engine=InnoDB;
+create table orders (id bigint not null, title varchar(255), customer_id bigint, primary key (id)) engine=InnoDB;
+create table User (id bigint not null, login varchar(255), password varchar(255), primary key (id)) engine=InnoDB;
+create table User_SEQ (next_val bigint) engine=InnoDB;
+insert into User_SEQ values ( 1 );
+alter table User add constraint UK_587tdsv8u5cvheyo9i261xhry unique (login);
+alter table Customer add constraint FKb4lp4g96o4g0qdwo5p87kl4sw foreign key (id) references User (id);
+alter table Employee add constraint FKk3y9fucyl9ybj1wyrx3hvsjby foreign key (id) references User (id);
+alter table orders add constraint FKlxvrjb6oyfjjffp0vvusn22uy foreign key (customer_id) references Customer (id);
