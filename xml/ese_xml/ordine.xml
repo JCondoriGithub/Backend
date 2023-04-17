@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- tradurre in linguaggio XML i seguenti dati, relativi alla spesa online, effettuata da un cliente tramite una applicazione web per smart phone.
+La spesa viene ordinata tramite un portale che a sua volta acquista gli articoli in vari negozi e impiega il corriere più conveniente, cercando di far risparmiare il consumatore.
+“L’ordine del cliente Paolo Rossi, cliente abituale domiciliato a Livorno in via dei Pensieri 60, con contatto p.rossi@mail.com, è stato richiesto il giorno 10 giugno 2013 alle ore 09.30.
+La consegna è prevista per giorno 10 giugno 2013 tra le ore 13.30 e 14.00, presso il domicilio del cliente, e pagamento pianificato a mezzo cartadi credito immediatamente dopo la consegna”. -->
+
+<ordine>
+	<cliente tipo="abituale">
+		<nome>Paolo</nome>
+		<cognome>Rossi</cognome>
+		<contatto>p.rossi@mail.com</contatto>
+		<indirizzo>
+			<citta>Livorno</citta>
+			<via>via dei Pensieri</via>
+			<num_civico>60</num_civico>
+		</indirizzo>
+	</cliente>
+	<data_ordine data="10/06/2013" orario="09:30" />
+	<consegna data="10/06/2013">
+		<orario_min>13:30</orario_min>
+		<orario_max>14:00</orario_max>
+		<luogo_consegna>indirizzo cliente</luogo_consegna>
+	</consegna>
+	<pagamento mezzo="carta di credito" momento="dopo la consegna" />
+</ordine>
