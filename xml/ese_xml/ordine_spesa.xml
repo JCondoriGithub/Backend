@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- tradurre in linguaggio XML i seguenti dati, relativi al carrello della spesa nell’ordine online discusso precedentemente.
+“Il carrello è composto dai seguenti articoli: 2 confezioni di latte parzialmente scremato da 1 litro con data scadenza di almeno 4 giorni dalla data di consegna della spesa;
+1 confezione di gelato Slurp al gusto di limone da 250 grammi; una confezione di caffè Hug da 20 bustine; 2 pani da 500 grammi senza sale;
+0.5 kg di pomodoro oblungo rosso; 1 cassa di acqua naturale da 6 bottiglie”. -->
+
+<ordine>
+	<articoli>
+		<prodotto>
+			<categoria>latte</categoria>
+			<confezioni>2</confezioni>
+			<confezione>
+				<tipologia>parzialmente scremato</tipologia>
+				<grandezza misura="litro">1</grandezza>
+				<data_scadenza data_consegna="gg">4 giorni dopo la consegna</data_scadenza>
+			</confezione>
+		</prodotto>
+		<prodotto>
+			<categoria>gelato</categoria>
+			<confezioni>1</confezioni>
+			<confezione>
+				<marca gusto="limone">Slurp</marca>
+				<grandezza misura="grammo">250</grandezza>
+			</confezione>
+		</prodotto>
+		<prodotto>
+			<categoria>caffè</categoria>
+			<confezioni>1</confezioni>
+			<confezione>
+				<marca>Hug</marca>
+				<grandezza misura="bustina">20</grandezza>
+			</confezione>
+		</prodotto>
+		<prodotto>
+			<categoria>pane</categoria>
+			<quantita>2</quantita>
+			<singolo_pane>
+				<grandezza misura="grammo">500</grandezza>
+				<ingrediente modalita="assente">sale</ingrediente>
+			</singolo_pane>
+		</prodotto>
+		<prodotto>
+			<categoria>pomodoro</categoria>
+			<tipologia colore="rosso">oblungo</tipologia>
+			<quantita misura="kg">0.5</quantita>
+		</prodotto>
+		<prodotto>
+			<categoria>acqua</categoria>
+			<casse>1</casse>
+			<cassa>
+				<tipologia>naturale</tipologia>
+				<grandezza misura="bottiglia">6</grandezza>
+			</cassa>
+		</prodotto>
+	</articoli>
+</ordine>
+
+<!-- i tipi di tag (ossia i nomi dei tag), devono essere in numero ragionevolmente limitato -->
