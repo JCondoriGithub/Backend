@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT recipes (recipe+)>
+	<!ELEMENT recipe (recipe_head, recipe_body, recipe_footer?, document_info)>
+		<!ELEMENT recipe_head (recipe_name, recipe_author?, meal_type)>
+			<!ELEMENT recipe_name (#PCDATA)>
+			<!ELEMENT recipe_author (#PCDATA)>
+			<!ELEMENT meal_type (#PCDATA)>
+		<!ELEMENT recipe_body (ingredients, directions)>
+			<!ELEMENT ingredients (ingredient+)>
+			<!ELEMENT ingredient (#PCDATA)>
+			<!ELEMENT directions (direction)+ >
+			<!ELEMENT direction (#PCDATA)>
+		<!ELEMENT recipe_footer (serving?, preparation_time?, cooking_time?)>
+			<!ELEMENT serving (#PCDATA)>
+			<!ELEMENT preparation_time (#PCDATA)>
+			<!ELEMENT cooking_time (#PCDATA)>
+		<!ELEMENT document_info (document_author, date_updated, source)>
+			<!ELEMENT document_author (#PCDATA)>
+			<!ELEMENT date_updated (#PCDATA)>
+			<!ELEMENT source (#PCDATA)>
+			
+			
+<!-- Una recipes deve avere almeno una ricetta, ogni ricetta deve avere: un'intestazione, un contenuto, eventualmente un pie di pagina e dell'informazione sul documento stesso.
+L'intestazione ha: il nome della ricetta, eventualmente l'autore e il tipo di pasto.
+Il contenuto ha: degli ingredienti e delle indicazioni. Negli ingredienti ci deve essere almeno un ingrediente e nelle indicazioni ci deve essere almeno un indicazione.
+L'eventuale pie di pagina ha: eventualmente la presentazione, eventualmente il tempo di preparazione ed eventualmente il tempo di cottura.
+l'informazione del documento ha: l'autore, la data di aggiornamento e la fonte -->

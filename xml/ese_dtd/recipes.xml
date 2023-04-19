@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE recipes SYSTEM "recipes.dtd">
+
+<recipes>
+	<recipe>
+		<recipe_head>
+			<recipe_name>lasagne</recipe_name>
+			<recipe_author>sconoscuto</recipe_author>
+			<meal_type>piatto salato</meal_type>
+		</recipe_head>
+		<recipe_body>
+			<ingredients>
+				<ingredient>carne di vitello</ingredient>
+				<ingredient>sugo di pomodoro</ingredient>
+				<ingredient>besciamella</ingredient>
+				<ingredient>formaggio grattuggiato</ingredient>
+				<ingredient>pasta sfoglia</ingredient>
+			</ingredients>
+			<directions>
+				<direction>creare la salsa ragù</direction>
+				<direction>uno strato è composto: dal ragù, dalla besciamella e dal formaggio</direction>
+				<direction>fare 4/5 strati</direction>
+			</directions>
+		</recipe_body>
+		<recipe_footer>
+			<preparation_time>2 ore</preparation_time>
+			<cooking_time>un ora e mezza</cooking_time>
+		</recipe_footer>
+		<document_info>
+			<document_author>Marco Marra</document_author>
+			<date_updated>02/12/2011</date_updated>
+			<source>sito dell'autore</source>
+		</document_info>
+	</recipe>
+	
+	<recipe>
+		<recipe_head>
+			<recipe_name>pasta al sugo</recipe_name>
+			<meal_type>piatto salato</meal_type>
+		</recipe_head>
+		<recipe_body>
+			<ingredients>
+				<ingredient>pasta</ingredient>
+				<ingredient>sugo di pomodoro</ingredient>
+			</ingredients>
+			<directions>
+				<direction>bollire la pasta</direction>
+				<direction>cuocere il sugo e mescolarlo con la pasta</direction>
+			</directions>
+		</recipe_body>
+		<recipe_footer>
+			<serving>servire con formaggio grattuggiato</serving>
+		</recipe_footer>
+		<document_info>
+			<document_author>Giuseppe Rossi</document_author>
+			<date_updated>30/03/20</date_updated>
+			<source>libro ricette</source>
+		</document_info>
+	</recipe>
+</recipes>
