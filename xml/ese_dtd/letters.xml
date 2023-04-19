@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE letters SYSTEM "letters.dtd">
+
+<letters>
+	<letter date="19/04/2023" sender="mario.rossi@live.it" recipient="luke.ferro@hotmail.it" id="primo">
+		<object>Conferma appuntamento</object>
+		<greeting>Eggregio Luca</greeting>
+		<body>
+			<paragraph>L'appuntamento è confermato per la data "12/05/2023"</paragraph>
+		</body>
+		<closure>Distinti saluti</closure>
+		<signature>Mario Rossi</signature>
+	</letter>
+	
+	<letter date="20/04/2023" sender="luke.ferro@hotmail.it" recipient="mario.rossi@live.it" id="secondo">
+		<object>Avviso ricezione email</object>
+		<greeting>Gentilissimo signor Mario</greeting>
+		<body>
+			<paragraph>Benissimo, allora ci vediamo in sede</paragraph>
+			<paragraph>Confermo la ricezione dell'email</paragraph>
+		</body>
+		<closure>Distinti saluti</closure>
+		<signature>Luca Ferro</signature>
+	</letter>
+</letters>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Si progetti il DTD e si scriva un XML valido per un linguaggio di markup per lettere.
+Ogni lettera ha un mittente, una data, un destinatario, un oggetto, una forma cortese di saluto, un corpo, una chiusura, una firma.
+Il corpo della lettera ha quanto meno un paragrafo -->
+
+<!ELEMENT letters (letter+)>
+	<!ELEMENT letter (object, greeting, body, closure, signature)>
+		<!ELEMENT object (#PCDATA)>
+		<!ELEMENT greeting (#PCDATA)>
+		<!ELEMENT body (paragraph+)>
+			<!ELEMENT paragraph (#PCDATA)>
+		<!ELEMENT closure (#PCDATA)>
+		<!ELEMENT signature (#PCDATA)>
+	
+	<!ATTLIST letter
+		id ID #REQUIRED
+		sender CDATA #REQUIRED
+		date CDATA #REQUIRED
+		recipient CDATA #REQUIRED>
