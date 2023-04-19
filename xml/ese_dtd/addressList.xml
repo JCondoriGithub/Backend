@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address_list SYSTEM "addressList.dtd">
+
+<address_list>
+	<informazione>
+		<nome>
+			<nome_proprio>Mario</nome_proprio>
+			<cognome>Rossi</cognome>
+		</nome>
+		<indirizzo>
+			<via>via Vittorio</via>
+			<via>via Speranza</via>
+			<indirizzo_postale>40012</indirizzo_postale>
+			<provincia>Casale</provincia>
+			<paese>Italia</paese>
+		</indirizzo>
+		<numero>3999653148</numero>
+		<numero>8327898955</numero>
+		<nazionalita>Francese</nazionalita>
+		<nota>è francese ma ha il nome italiano</nota>
+		<nota>gli piace molto la lasagna</nota>
+	</informazione>
+	<informazione>
+		<nome>
+			<nome_proprio>Riccardo</nome_proprio>
+			<secondo_nome>Marzio</secondo_nome>
+			<cognome>Mariottide</cognome>
+		</nome>
+		<indirizzo>
+			<via>via Mugnaio</via>
+			<indirizzo_postale>10036</indirizzo_postale>
+			<paese>Italia</paese>
+		</indirizzo>
+		<email>ricc.marzio@ottide.it</email>
+		<nota>ha la nazionalità e numero sconosciuti</nota>
+	</informazione>
+</address_list>

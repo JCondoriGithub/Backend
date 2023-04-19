@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Si progetti il DTD per la gestione di address list. Si scriva inoltre un file XML valido per il DTD progettato.
+Una address list contiene almeno una informazione. Ogni informazione include il nome, zero o più indirizzi, zero o più numeri di telefono, zero o più indirizzi email, eventualmente
+la nazionalità, zero o più note. Il nome contiene il nome proprio, zero o più secondi nomi, ed il cognome.
+Un indirizzo è caratterizzato da almeno una via, un indirizzo postale, eventualmente la provincia, e sicuramente il paese -->
+
+<!ELEMENT address_list (informazione+)>
+	<!ELEMENT informazione (nome, indirizzo*, numero*, email*, nazionalita?, nota*)>
+		<!ELEMENT nome (nome_proprio, secondo_nome*, cognome)>
+			<!ELEMENT nome_proprio (#PCDATA)>
+			<!ELEMENT secondo_nome (#PCDATA)>
+			<!ELEMENT cognome (#PCDATA)>
+		<!ELEMENT indirizzo (via+, indirizzo_postale, provincia?, paese)>
+			<!ELEMENT via (#PCDATA)>
+			<!ELEMENT indirizzo_postale (#PCDATA)>
+			<!ELEMENT provincia (#PCDATA)>
+			<!ELEMENT paese (#PCDATA)>
+		<!ELEMENT numero (#PCDATA)>
+		<!ELEMENT email (#PCDATA)>
+		<!ELEMENT nazionalita (#PCDATA)>
+		<!ELEMENT nota (#PCDATA)>
