@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ese2" xmlns:tns="http://www.example.org/ese2" elementFormDefault="qualified">
+
+    <element name="a" type="tns:aType"></element>
+    
+    <complexType name="aType">
+    	<sequence>
+    		<choice>
+    			<element name="b" type="string"></element>
+    			<element name="c" type="string"></element>
+    		</choice>
+    		<choice minOccurs="0" maxOccurs="unbounded">
+    			<element name="d" type="string"></element>
+    			<element name="e" type="string"></element>
+    			<element name="f" type="string"></element>
+    		</choice>
+    	</sequence>
+    </complexType>
+</schema>
+
+<!-- !DOCTYPE a [
+<!ELEMENT a ((b|c),(d|e|f)*)>
+<!ELEMENT b #PCDATA>
+<!ELEMENT c #PCDATA>
+<!ELEMENT d #PCDATA>
+<!ELEMENT e #PCDATA>
+<!ELEMENT f #PCDATA>
+]> -->

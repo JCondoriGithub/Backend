@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ese3" xmlns:tns="http://www.example.org/ese3" elementFormDefault="qualified">
+
+
+    <element name="a" type="tns:atype"></element>
+    
+    <complexType name="atype">
+    	<sequence>
+    		<element name="b" type="tns:bType" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</element>
+    		<element name="c" type="string"></element>
+    		<element name="d" type="tns:empty" minOccurs="1"
+    			maxOccurs="unbounded">
+    		</element>
+    		<element name="e" type="tns:eType" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="empty"></complexType>
+
+    <complexType name="bType">
+    	<simpleContent>
+    		<extension base="string">
+    			<attribute name="x" type="string" use="required"></attribute>
+    			<attribute name="y" type="string" use="optional"></attribute>
+    		</extension>
+    	</simpleContent>
+    </complexType>
+
+    <complexType name="eType">
+    	<complexContent>
+    		<extension base="tns:empty">
+    			<attribute name="x" type="string" use="required"></attribute>
+
+    		</extension>
+    	</complexContent>
+    </complexType>
+</schema>
+
+<!-- <!DOCTYPE a [
+<!ELEMENT a (b*,c,d+,e?)>
+<!ELEMENT b #PCDATA>
+<!ELEMENT c #PCDATA>
+<!ELEMENT d EMPTY>
+<!ELEMENT e EMPTY>
+<!ATTLIST b
+x CDATA #REQUIRED
+y CDATA #IMPLIED>
+<!ATTLIST e
+x CDATA #REQUIRED
+]> -->
