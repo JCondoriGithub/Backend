@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/annotation" xmlns:tns="http://www.example.org/annotation" elementFormDefault="qualified">
+
+    <element name="Appunto" type="tns:AppuntoType"></element>
+    
+    <complexType name="AppuntoType">
+    	<sequence>
+    		<element name="Da" type="tns:mailAddress"></element>
+    		<element name="A" type="tns:mailAddress"></element>
+    		<element name="Data" type="date"></element>
+    		<element name="Ora" type="time"></element>
+    		<element name="Priorita">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="alta"></enumeration>
+    					<enumeration value="media"></enumeration>
+    					<enumeration value="urgente"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="Oggetto" type="string"></element>
+    		<element name="Corpo" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <simpleType name="mailAddress">
+    	<restriction base="string">
+    		<pattern value="[a-z]+.[a-z]+@[a-z]+.[a-z]{2,3}"></pattern>
+    	</restriction>
+    </simpleType>
+</schema>
+
+<!-- Creare uno Schema XML che descriva la struttura di un documento appunto, contenente: Da, A, Data, Ora, Priorità, Oggetto, Corpo
+L'elemento Priorità può assumere solo i valori "alta", "media" ed "urgente". Usare opportunamente i tipi built-in di XML Schema per definire il contenuto degli elementi indicati.
+Creare un documento istanza XML valido rispetto a questo schema -->

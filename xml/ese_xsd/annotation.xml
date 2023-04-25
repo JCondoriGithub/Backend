@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Appunto xmlns:tns="http://www.example.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/annotation annotation.xsd ">
+  <tns:Da>mario.roxy@live.it</tns:Da>
+  <tns:A>melly.remy@hotmail.com</tns:A>
+  <tns:Data>2023-05-30</tns:Data>
+  <tns:Ora>09:35:00</tns:Ora>
+  <tns:Priorita>media</tns:Priorita>
+  <tns:Oggetto>Modifica al progetto</tns:Oggetto>
+  <tns:Corpo>Si prega di cambiare il font del logo, passando da Italic a Bold</tns:Corpo>
+</tns:Appunto>
