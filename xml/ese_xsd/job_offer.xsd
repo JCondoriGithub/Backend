@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/job_offer" xmlns:tns="http://www.example.org/job_offer" elementFormDefault="qualified">
+
+    <element name="offers" type="tns:offersType"></element>
+    
+    <complexType name="offersType">
+    	<sequence>
+    		<element name="job" minOccurs="1" maxOccurs="unbounded">
+    			<complexType>
+    				<sequence>
+    					<element name="description" type="string"></element>
+    					<element name="skills_needed">
+    						<complexType>
+    							<sequence>
+    								<element name="skill" type="string"
+    									minOccurs="1" maxOccurs="4">
+    								</element>
+    							</sequence>
+    						</complexType>
+    					</element>
+
+    					<element name="address">
+    						<complexType>
+    							<sequence>
+    								<element name="citta"
+    									type="string">
+    								</element>
+    								<element name="via" type="string">
+    								</element>
+    								<element name="civico">
+    									<simpleType>
+    										<restriction
+    											base="string">
+    											<minLength value="1"></minLength>
+    											<maxLength value="5"></maxLength>
+    										</restriction>
+    									</simpleType>
+    								</element>
+    							</sequence>
+    						</complexType>
+    					</element>
+    					<element name="salary" type="decimal"></element>
+    				</sequence>
+    				<attribute name="title" type="string"></attribute>
+    				<attribute name="company-name" type="string"></attribute>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+</schema>
+
+
+<!-- Job Title: Webmaster
+Job Description: We are looking for a Webmaster to oversee the management of our company’s website. The Webmaster will be responsible for working with other staff members to
+collect information for the website, and for creating and maintaining the web pages.
+Skills needed: Basic writing skills, good communication skills, Unix, HTML
+Ogni skill deve essere un singolo elemento, possono essere indicati al più 4 skill per offerta di lavoro. Si aggiungano anche le informazioni relative al luogo dove il lavoro
+è offerto (società, città, ...) e il salario offerto -->
