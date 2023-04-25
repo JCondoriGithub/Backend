@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT Dialogo (Trascrizione)>
+	<!ELEMENT Trascrizione (Parlanti, Argomenti, Episodio)>
+		<!ELEMENT Parlanti (Parlante+)>
+			<!ELEMENT Parlante EMPTY>
+		<!ELEMENT Argomenti (Argomento+)>
+			<!ELEMENT Argomento EMPTY>
+		<!ELEMENT Episodio (Sezione)>
+			<!ELEMENT Sezione (Turno)>
+				<!ELEMENT Turno (#PCDATA | Evento)*>
+				<!ELEMENT Evento EMPTY>
+			
+<!ATTLIST Trascrizione
+	nome_file	CDATA	#REQUIRED>
+		
+<!ATTLIST Parlante
+	id		ID		#REQUIRED
+	nome	CDATA	#REQUIRED
+	tipo	(male | female)		#REQUIRED
+	accento	CDATA	#REQUIRED>
+	
+<!ATTLIST Argomento
+	id			ID		#REQUIRED
+	descrizione	CDATA	#REQUIRED>
+	
+<!ATTLIST Sezione
+	tipo		CDATA #REQUIRED
+	Argomento	CDATA #REQUIRED
+	start		CDATA	#REQUIRED
+	end			CDATA #REQUIRED>
+	
+<!ATTLIST Turno
+	parlanti	IDREFS 	#REQUIRED
+	start		CDATA	#REQUIRED
+	end			CDATA	#REQUIRED
+	modo		CDATA	#REQUIRED>
+	
+<!ATTLIST Evento
+	tipo	CDATA	#REQUIRED
+	desc	CDATA	#REQUIRED>
+	

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Dialogo>
+	<Trascrizione nome_file="miofile">
+		<Parlanti>
+			<Parlante id="par1" nome="mario" tipo="male"
+				accento="toscano" />
+			<Parlante id="par2" nome="carla" tipo="female"
+				accento="romano" />
+		</Parlanti>
+		<Argomenti>
+			<Argomento id="a45" descrizione="generale" />
+			<Argomento id="a46" descrizione="generale" />
+		</Argomenti>
+		<Episodio>
+			<Sezione tipo="rapporto" Argomento="a45" start="900" end="9">
+				<Turno parlanti="par1 par2" start="900" end="9"
+					modo="spontaneo">
+					cosa hai
+					<Evento tipo="rumore" desc="colpo di tosse" />
+					fatto ieri?
+				</Turno>
+			</Sezione>
+		</Episodio>
+	</Trascrizione>
+</Dialogo>

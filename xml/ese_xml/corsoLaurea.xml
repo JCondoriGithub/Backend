@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CorsoDiLaurea SYSTEM "corsoLaurea.dtd" >
+
+<CorsoDiLaurea facolta="Informatica">
+  <Corso numeroCrediti="30" semestre="primo">
+    <NomeCorso>informatica base</NomeCorso>
+    <DescrizioneCorso>fondamenti dell'informatica</DescrizioneCorso>
+    <Docente>
+      <Cognome>Vizio</Cognome>
+      <Nome>Maurizio</Nome>
+      <Dipartimento>Bicocca</Dipartimento>
+      <Foto url="../img/docenti/maurizio-vizio.png"/>
+    </Docente>
+    <Docente>
+    	<Cognome>Rossi</Cognome>
+    	<Nome>Michele</Nome>
+    	<Dipartimento>Politecnico</Dipartimento>
+    	<Commento>preferisce le lezioni in DAD</Commento>
+    </Docente>
+    <Studente matricola="33014">
+    	<Cognome>Mori</Cognome>
+    	<Nome>Giuseppe</Nome>
+    	<Foto url="../img/studenti/giuseppe-mori.png"/>
+    	<Commento>E' il migliore della sua facolta</Commento>
+    </Studente>
+    <Studente matricola="30098">
+    	<Cognome>Capasalda</Cognome>
+    	<Nome>Roberto</Nome>
+    	<Foto url="../img/studenti/roberto-capasalda.png"/>
+    </Studente>
+  </Corso>
+  <Corso semestre="secondo" numeroCrediti="27" sede="Torino" tipo="opzionale">
+  	<NomeCorso>Ingegneria</NomeCorso>
+  	<DescrizioneCorso>Basi del ragionamentoe della tecnica</DescrizioneCorso>
+  	<Docente>
+  		<Cognome>Crepaldi</Cognome>
+  		<Nome>Gullielmo</Nome>
+  		<Dipartimento>&INGUNIKORE;</Dipartimento>
+  		<Foto url="../img/docenti/gullielmo-crepaldi.png"/>
+  	</Docente>
+  	<Studente matricola="30069">
+  		<Cognome>Mariottide</Cognome>
+  		<Nome>Giovanni</Nome>
+  	</Studente>
+  	<Studente matricola="60071">
+  		<Cognome>Ruggeri</Cognome>
+  		<Nome>Martina</Nome>
+  		<Commento>soggiorna nei dormitori dell'università</Commento>
+  		<Commento>osservata speciale</Commento>
+  	</Studente>
+  </Corso>
+</CorsoDiLaurea>

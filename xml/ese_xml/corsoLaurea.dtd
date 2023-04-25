@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT CorsoDiLaurea (Corso+)>
+	<!ELEMENT Corso (NomeCorso, DescrizioneCorso?, Docente+, Studente*)>
+		<!ELEMENT Docente (Cognome, Nome, Dipartimento, (Foto|Commento)*)>
+		<!ELEMENT Studente (Cognome, Nome, (Foto|Commento)*)>
+		<!ELEMENT NomeCorso (#PCDATA)>
+		<!ELEMENT DescrizioneCorso (#PCDATA)>
+			<!ELEMENT Cognome (#PCDATA)>
+			<!ELEMENT Nome (#PCDATA)>
+			<!ELEMENT Dipartimento (#PCDATA)>
+			<!ELEMENT Foto EMPTY>
+			<!ELEMENT Commento (#PCDATA)>
+			
+<!ATTLIST CorsoDiLaurea
+	facolta CDATA #REQUIRED>
+	
+<!ATTLIST Corso
+	numeroCrediti CDATA 		#REQUIRED
+	semestre 	(primo|secondo)	#REQUIRED
+	sede 		CDATA 			#IMPLIED
+	tipo 		(obbligatorio|opzionale) #IMPLIED >
+	
+<!ATTLIST Studente
+	matricola CDATA #REQUIRED>
+	
+<!ATTLIST Foto
+	url CDATA #REQUIRED>
+	
+<!ENTITY agrave "à">
+<!ENTITY INGUNIKORE "Facolt&agrave; di Ingegneria, Unikore Enna">
