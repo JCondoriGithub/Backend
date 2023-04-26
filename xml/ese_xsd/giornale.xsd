@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/giornale" xmlns:tns="http://www.example.org/giornale" elementFormDefault="qualified">
+
+    <element name="Giornale">
+    	<complexType>
+    		<sequence>
+    			<element name="Articolo" minOccurs="1"
+    				maxOccurs="unbounded">
+    				<complexType>
+    					<sequence>
+    						<element name="Titolo" type="string"></element>
+    						<element name="Sottotitolo" type="string"></element>
+    						<element name="Intestazione"
+    							type="string">
+    						</element>
+    						<element name="Corpo" type="string"></element>
+    						<element name="Note" type="string"></element>
+    					</sequence>
+    					<attribute name="autore" type="string"
+    						use="required">
+    					</attribute>
+    					<attribute name="curatore" type="string"></attribute>
+    					<attribute name="data" type="date"></attribute>
+    					<attribute name="edizione" type="integer"></attribute>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>
+
+
+<!-- Creare uno Schema XML che descriva la struttura di un documento giornale, che rispetti i seguenti vincoli:
+Elemento GIORNALE (ARTICOLO+)
+Elemento ARTICOLO (TITOLO, SOTTOTITOLO, INTESTAZIONE, CORPO, NOTE)
+Elemento TITOLO, SOTTOTITOLO, INTESTAZIONE, CORPO, NOTE sono di tipo stringa
+
+AUTORE attributo richiesto di tipo stringa di ARTICOLO
+CURATORE attributo di tipo stringa di ARTICOLO
+DATA attributo di tipo data di ARTICOLO
+EDIZIONE attributo di tipo intero di ARTICOLO -->

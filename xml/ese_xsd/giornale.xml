@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Giornale xmlns:tns="http://www.example.org/giornale" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/giornale giornale.xsd ">
+  <tns:Articolo autore="Mauro Bisetti" data="2020-12-09" edizione="89">
+    <tns:Titolo>Bastardi stilisti</tns:Titolo>
+    <tns:Sottotitolo>Come mai l'hanno fatta uscire cosi?</tns:Sottotitolo>
+    <tns:Intestazione>Stilisti perdono la testa</tns:Intestazione>
+    <tns:Corpo>Ieri sera, al famoso evento dei grandi VIP del paese, la famosa attrice 19enne si è presentata in un abito decisamente particolare. Da mettersi le mani nei capelli insomma...</tns:Corpo>
+    <tns:Note>Da verificare la punteggiatura</tns:Note>
+  </tns:Articolo>
+  <tns:Articolo autore="Paolo Mostri" curatore="Giancluca Meri" data="2022-02-17">
+  	<tns:Titolo>Oktagon 2023</tns:Titolo>
+  	<tns:Sottotitolo>A Milano ritorna la kickboxing</tns:Sottotitolo>
+  	<tns:Intestazione>Evento da non perdere</tns:Intestazione>
+  	<tns:Corpo>Il 30/04/2023, ritorna con furore il più grande evento della kickboxing d'Italia. Evento che inizia alle 21:00 e finisce alle 02:00 circa. Ospite speciale Mario Balotelli.</tns:Corpo>
+  	<tns:Note>Da non pubblicare ancora per via di problemi legati all'evento oktagon</tns:Note>
+  </tns:Articolo>
+</tns:Giornale>
