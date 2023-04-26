@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:PianoDiStudio xmlns:tns="http://www.example.org/pianoDiStudio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/pianoDiStudio pianoDiStudio.xsd ">
+  <tns:Studente corso-laurea="Informatica" data-nascita="2004-11-07">
+    <tns:Matricola>97852255874</tns:Matricola>
+    <tns:Nome>Luca</tns:Nome>
+    <tns:Cognome>Carminati</tns:Cognome>
+  </tns:Studente>
+  <tns:Corsi>
+    <tns:Corso anno="2" voto="20">Sistemi</tns:Corso>
+    <tns:Corso anno="1" voto="23">Fondamenti</tns:Corso>
+    <tns:Corso anno="2" voto="27">Basi dati</tns:Corso>
+    <tns:Corso anno="3" voto="26">Backend 2</tns:Corso>
+    <tns:Corso anno="2" voto="29">Frontend 1</tns:Corso>
+  </tns:Corsi>
+</tns:PianoDiStudio>

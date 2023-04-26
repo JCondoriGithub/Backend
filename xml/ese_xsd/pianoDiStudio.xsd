@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/pianoDiStudio" xmlns:tns="http://www.example.org/pianoDiStudio" elementFormDefault="qualified">
+
+
+    <element name="PianoDiStudio">
+    	<complexType>
+    		<sequence>
+    			<element name="Studente">
+    				<complexType>
+    					<sequence>
+    						<element name="Matricola" type="integer"></element>
+    						<element name="Nome" type="string"></element>
+    						<element name="Cognome" type="string"></element>
+    					</sequence>
+    					<attribute name="data-nascita" type="date"></attribute>
+    					<attribute name="corso-laurea" type="string"></attribute>
+    				</complexType>
+    			</element>
+    			<element name="Corsi">
+    				<complexType>
+    					<sequence>
+    						<element name="Corso" type="tns:CorsoType"
+    							minOccurs="1" maxOccurs="unbounded">
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <complexType name="CorsoType">
+    	<simpleContent>
+    		<extension base="string">
+    			<attribute name="anno">
+    				<simpleType>
+    					<restriction base="integer">
+    						<minInclusive value="1"></minInclusive>
+    						<maxInclusive value="3"></maxInclusive>
+    					</restriction>
+    				</simpleType>
+    			</attribute>
+    			<attribute name="voto">
+    				<simpleType>
+    					<restriction base="integer">
+    						<minInclusive value="18"></minInclusive>
+    						<maxInclusive value="30"></maxInclusive>
+    					</restriction>
+    				</simpleType>
+    			</attribute>
+    		</extension>
+    	</simpleContent>
+    </complexType>
+</schema>
+
+
+<!-- Scrivere uno Schema XML per rappresentare le informazioni relative al piano di studio di uno studente di un certo corso di laurea triennale.
+L'elemento radice deve essere pianoDiStudio. Oltre ai dati relativi allo studente (nome, cognome, matricola, data di nascita, ...) vanno rappresentati, per ogni anno di corso
+frequentato dallo studente, i corsi che lo studente ha scelto di frequentare, ognuno comprendente l'eventuale voto dell'esame sostenuto positivamente.
+Per distinguere i vari anni di corso utilizzare un attributo anno che può assumere solo valori interi compresi tra 1 e 3 -->
